@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using OpenTK.Graphics.OpenGL;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace ManagedModeller {
@@ -7,10 +8,33 @@ namespace ManagedModeller {
         private bool dirty = false;
         public bool IsDirty { get { return dirty; } }
 
+        private Camera xCamera;
+        private Camera yCamera;
+        private Camera zCamera;
+        private Camera perspectiveCamera;
         private List<Primitive> primitives = new List<Primitive>();
 
         public Scene() {
+            xCamera = new OrthographicCamera();
             sphere();
+        }
+
+        public void RenderAxes() {
+            GL.Color3(Color.White);
+            GL.Begin(PrimitiveType.Lines);
+            GL.Vertex4(0, 0, 0, 1);
+            GL.Vertex4(1, 0, 0, 0);
+            //GL.Vertex4(0, 0, 0, 1);
+            //GL.Vertex4(-1, 0, 0, 0);
+            GL.Vertex4(0, 0, 0, 1);
+            GL.Vertex4(0, 1, 0, 0);
+            //GL.Vertex4(0, 0, 0, 1);
+            //GL.Vertex4(0, -1, 0, 0);
+            GL.Vertex4(0, 0, 0, 1);
+            GL.Vertex4(0, 0, 1, 0);
+            //GL.Vertex4(0, 0, 0, 1);
+            //GL.Vertex4(0, 0, -1, 0);
+            GL.End();
         }
 
         private void sphere() {
@@ -49,7 +73,7 @@ namespace ManagedModeller {
             primitives.Add(primitive);
         }
 
-        public void render() {
+        public void Render() {
             foreach (Primitive primitive in primitives) {
                 primitive.render();
             }

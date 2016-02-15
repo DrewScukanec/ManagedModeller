@@ -9,26 +9,12 @@ namespace ManagedModeller {
 
     public partial class OpenGLPanel : UserControl {
 
-        private static Vector3 X_AXIS = new Vector3(1, 0, 0);
-        private static Vector3 Y_AXIS = new Vector3(0, 1, 0);
-        private static Vector3 Z_AXIS = new Vector3(0, 0, 1);
         private const float ANGLE_SCALE = 2;
 
-        public enum CameraType {
-            XOrtho,
-            YOrtho,
-            ZOrtho
-        }
-
         private bool loaded = false;
-        private CameraType cameraType;
-        private PolygonMode polygonMode = PolygonMode.Fill;
-        private Vector3 axis = new Vector3();
-        private Vector3 offset = new Vector3();
-        private float rotation = 0;
-        private float zoom = 1;
 
         private Scene scene;
+        private Camera camera;
 
         public OpenGLPanel() {
             InitializeComponent();
@@ -66,83 +52,6 @@ namespace ManagedModeller {
             GL.Viewport(0, 0, w, h); // Use all of the glControl painting area
         }
 
-        private void SetProjectionMatrix() {
-            int w = glControl.Width;
-            int h = glControl.Height;
-            GL.MatrixMode(MatrixMode.Projection);
-            GL.LoadIdentity();
-            GL.Ortho(-w / 2, w / 2, -h / 2, h / 2, -100 * zoom, 100 * zoom);
-        }
-
-        private void SetModelViewMatrix() {
-            GL.PolygonMode(MaterialFace.Front, polygonMode);
-            GL.PolygonMode(MaterialFace.Back, PolygonMode.Line);
-            GL.MatrixMode(MatrixMode.Modelview);
-            GL.LoadIdentity();
-            switch (cameraType) {
-                case CameraType.XOrtho:
-                    GL.Rotate(-90, Y_AXIS);
-                    break;
-                case CameraType.YOrtho:
-                    GL.Rotate(90, X_AXIS);
-                    break;
-                case CameraType.ZOrtho:
-                    break;
-            }
-            GL.Translate(offset);
-            GL.Scale(zoom, zoom, zoom);
-            GL.Rotate(rotation / ANGLE_SCALE, axis);
-        }
-
-        private void DrawScene() {
-            scene.render();
-        }
-
-        private void DrawDefaultScene() {
-            GL.PushMatrix();
-            GL.Translate(100, 0, 0);
-            //GL.Rotate(60, new Vector3(1, 1, 1));
-
-            GL.Color3(Color.Yellow);
-            GL.Begin(PrimitiveType.Triangles);
-            GL.Vertex3(0, 0, 0);
-            GL.Vertex3(100, 0, 0);
-            GL.Vertex3(0, 100, 0);
-            GL.End();
-            GL.Color3(Color.Red);
-            GL.Begin(PrimitiveType.Triangles);
-            GL.Vertex3(0, 0, 0);
-            GL.Vertex3(0, 0, 100);
-            GL.Vertex3(100, 0, 0);
-            GL.End();
-            GL.Color3(Color.Green);
-            GL.Begin(PrimitiveType.Triangles);
-            GL.Vertex3(0, 0, 0);
-            GL.Vertex3(0, 100, 0);
-            GL.Vertex3(0, 0, 100);
-            GL.End();
-
-            GL.PopMatrix();
-        }
-
-        private void DrawAxes() {
-            GL.Color3(Color.White);
-            GL.Begin(PrimitiveType.Lines);
-            GL.Vertex4(0, 0, 0, 1);
-            GL.Vertex4(1, 0, 0, 0);
-            //GL.Vertex4(0, 0, 0, 1);
-            //GL.Vertex4(-1, 0, 0, 0);
-            GL.Vertex4(0, 0, 0, 1);
-            GL.Vertex4(0, 1, 0, 0);
-            //GL.Vertex4(0, 0, 0, 1);
-            //GL.Vertex4(0, -1, 0, 0);
-            GL.Vertex4(0, 0, 0, 1);
-            GL.Vertex4(0, 0, 1, 0);
-            //GL.Vertex4(0, 0, 0, 1);
-            //GL.Vertex4(0, 0, -1, 0);
-            GL.End();
-        }
-
         private void glControlLoad(object sender, EventArgs e) {
             if (DesignMode)
                 return;
@@ -161,10 +70,10 @@ namespace ManagedModeller {
 
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
-            SetProjectionMatrix();
-            SetModelViewMatrix();
-            DrawScene();
-            DrawAxes();
+            camera.SetProjectionMatrix();
+            camera.SetModelViewMatrix();
+            scene.Render();
+            scene.RenderAxes();
 
             glControl.SwapBuffers();
         }
@@ -190,25 +99,13 @@ namespace ManagedModeller {
         private void glControlOnMouseMove(object sender, MouseEventArgs e) {
             if (leftMousePressed) {
                 float modifier = (ModifierKeys.HasFlag(Keys.Control) ? 0.1f : 1.0f);
-                switch (cameraType) {
-                    case CameraType.XOrtho:
-                        offset.Z -= (e.X - lastX) * modifier;
-                        offset.Y -= (e.Y - lastY) * modifier;
-                        break;
-                    case CameraType.YOrtho:
-                        offset.X += (e.X - lastX) * modifier;
-                        offset.Z += (e.Y - lastY) * modifier;
-                        break;
-                    case CameraType.ZOrtho:
-                        offset.X += (e.X - lastX) * modifier;
-                        offset.Y -= (e.Y - lastY) * modifier;
-                        break;
-                }
+                Vector2 shift = new Vector2((e.X - lastX) * modifier, (e.Y - lastY) * modifier);
                 lastX = e.X;
                 lastY = e.Y;
                 glControl.Invalidate();
             } else if (rightMousePressed) {
-                rotation -= (e.Y - lastPhi) * (ModifierKeys.HasFlag(Keys.Control) ? 0.1f : 1.0f);
+                float rotation = (e.Y - lastPhi) * (ModifierKeys.HasFlag(Keys.Control) ? 0.1f : 1.0f);
+                camera.setRotation(camera.getRotation() - rotation);
                 lastPhi = e.Y;
                 glControl.Invalidate();
             }
@@ -227,19 +124,23 @@ namespace ManagedModeller {
 
         private void glControlResize(object sender, EventArgs e) {
             glControl.MakeCurrent();
+            camera.setHeight(glControl.Height);
+            camera.setWidth(glControl.Width);
             SetupViewport();
             glControl.Invalidate();
         }
 
         private void glControlOnMouseWheel(object sender, MouseEventArgs e) {
             if (!leftMousePressed && !rightMousePressed) {
-                zoom *= (float)Math.Exp(e.Delta / 750.0 * (ModifierKeys.HasFlag(Keys.Control) ? 0.1f : 1.0f));
+                float modifier = (ModifierKeys.HasFlag(Keys.Control) ? 0.1f : 1.0f);
+                float zoom = (float)Math.Exp(e.Delta / 750.0 * modifier);
+                camera.setZoom(camera.getZoom()* zoom);
                 glControl.Invalidate();
             }
         }
 
         private void glControlOnMouseDoubleClick(object sender, MouseEventArgs e) {
-            polygonMode = polygonMode == PolygonMode.Fill ? PolygonMode.Line : PolygonMode.Fill;
+            camera.setPolygonMode(camera.getPolygonMode() == PolygonMode.Fill ? PolygonMode.Line : PolygonMode.Fill);
             glControl.Invalidate();
         }
     }
