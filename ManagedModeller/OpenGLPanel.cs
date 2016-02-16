@@ -11,17 +11,34 @@ namespace ManagedModeller {
 
         private const float ANGLE_SCALE = 2;
 
+        public enum CameraType {
+            XOrtho,
+            YOrtho,
+            ZOrtho
+        }
+
         private bool loaded = false;
 
         private Scene scene;
         private Camera camera;
+        private CameraType cameraType;
 
         public OpenGLPanel() {
             InitializeComponent();
             glControl.MouseWheel += glControlOnMouseWheel;
         }
 
-        public void setScene(Scene scene) { this.scene = scene; }
+        public void setScene(Scene scene) {
+            this.scene = scene;
+            switch (cameraType) {
+                case CameraType.XOrtho: camera = scene.GetXOrthographicCamera(); break;
+                case CameraType.YOrtho: camera = scene.GetYOrthographicCamera(); break;
+                case CameraType.ZOrtho: camera = scene.GetZOrthographicCamera(); break;
+            }
+            camera.SetWidth(glControl.Width);
+            camera.SetHeight(glControl.Height);
+            glControl.Invalidate();
+        }
 
         [Category("OpenGL"), Description("Specifies the camera type of the control")]
         public CameraType Camera {
@@ -31,17 +48,6 @@ namespace ManagedModeller {
 
             set {
                 cameraType = value;
-                switch (cameraType) {
-                    case CameraType.XOrtho:
-                        axis = X_AXIS;
-                        break;
-                    case CameraType.YOrtho:
-                        axis = Y_AXIS;
-                        break;
-                    case CameraType.ZOrtho:
-                        axis = Z_AXIS;
-                        break;
-                }
                 glControl.Invalidate();
             }
         }
@@ -99,13 +105,14 @@ namespace ManagedModeller {
         private void glControlOnMouseMove(object sender, MouseEventArgs e) {
             if (leftMousePressed) {
                 float modifier = (ModifierKeys.HasFlag(Keys.Control) ? 0.1f : 1.0f);
-                Vector2 shift = new Vector2((e.X - lastX) * modifier, (e.Y - lastY) * modifier);
+                Vector2 shift = new Vector2((e.X - lastX) * modifier, -(e.Y - lastY) * modifier);
+                camera.Shift(shift);
                 lastX = e.X;
                 lastY = e.Y;
                 glControl.Invalidate();
             } else if (rightMousePressed) {
                 float rotation = (e.Y - lastPhi) * (ModifierKeys.HasFlag(Keys.Control) ? 0.1f : 1.0f);
-                camera.setRotation(camera.getRotation() - rotation);
+                camera.SetRotation(camera.GetRotation() + rotation);
                 lastPhi = e.Y;
                 glControl.Invalidate();
             }
@@ -123,9 +130,12 @@ namespace ManagedModeller {
         }
 
         private void glControlResize(object sender, EventArgs e) {
+            if (!loaded || DesignMode)
+                return;
+
             glControl.MakeCurrent();
-            camera.setHeight(glControl.Height);
-            camera.setWidth(glControl.Width);
+            camera.SetHeight(glControl.Height);
+            camera.SetWidth(glControl.Width);
             SetupViewport();
             glControl.Invalidate();
         }
@@ -134,13 +144,13 @@ namespace ManagedModeller {
             if (!leftMousePressed && !rightMousePressed) {
                 float modifier = (ModifierKeys.HasFlag(Keys.Control) ? 0.1f : 1.0f);
                 float zoom = (float)Math.Exp(e.Delta / 750.0 * modifier);
-                camera.setZoom(camera.getZoom()* zoom);
+                camera.SetZoom(camera.GetZoom()* zoom);
                 glControl.Invalidate();
             }
         }
 
         private void glControlOnMouseDoubleClick(object sender, MouseEventArgs e) {
-            camera.setPolygonMode(camera.getPolygonMode() == PolygonMode.Fill ? PolygonMode.Line : PolygonMode.Fill);
+            camera.SetPolygonMode(camera.GetPolygonMode() == PolygonMode.Fill ? PolygonMode.Line : PolygonMode.Fill);
             glControl.Invalidate();
         }
     }

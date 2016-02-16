@@ -8,15 +8,47 @@ namespace ManagedModeller {
         private bool dirty = false;
         public bool IsDirty { get { return dirty; } }
 
-        private Camera xCamera;
-        private Camera yCamera;
-        private Camera zCamera;
+        private OrthographicCamera xCamera = OrthographicCamera.CreateXOrthographic();
+        private OrthographicCamera yCamera = OrthographicCamera.CreateYOrthographic();
+        private OrthographicCamera zCamera = OrthographicCamera.CreateZOrthographic();
         private Camera perspectiveCamera;
         private List<Primitive> primitives = new List<Primitive>();
 
         public Scene() {
-            xCamera = new OrthographicCamera();
-            sphere();
+            //Sphere();
+            Triangles();
+        }
+
+        private void Sphere() {
+            Sphere s = new Sphere();
+            s.SetColor(Color.Azure);
+            primitives.Add(s);
+        }
+
+        private void Triangles() {
+            Triangle t1 = new Triangle();
+            t1.GetTransformation().SetTranslation(100, 0, 0);
+            t1.SetColor(Color.Yellow);
+            t1.SetP1(0, 0, 0);
+            t1.SetP2(100, 0, 0);
+            t1.SetP3(0, 100, 0);
+            AddPrimitive(t1);
+
+            Triangle t2 = new Triangle();
+            t2.GetTransformation().SetTranslation(100, 0, 0);
+            t2.SetColor(Color.Red);
+            t2.SetP1(0, 0, 0);
+            t2.SetP2(0, 0, 100);
+            t2.SetP3(100, 0, 0);
+            AddPrimitive(t2);
+
+            Triangle t3 = new Triangle();
+            t3.GetTransformation().SetTranslation(100, 0, 0);
+            t3.SetColor(Color.Green);
+            t3.SetP1(0, 0, 0);
+            t3.SetP2(0, 100, 0);
+            t3.SetP3(0, 0, 100);
+            AddPrimitive(t3);
         }
 
         public void RenderAxes() {
@@ -37,45 +69,25 @@ namespace ManagedModeller {
             GL.End();
         }
 
-        private void sphere() {
-            Sphere s = new Sphere();
-            s.setColor(Color.Azure);
-            primitives.Add(s);
+        public OrthographicCamera GetXOrthographicCamera() {
+            return xCamera;
         }
 
-        private void triangles() {
-            Triangle t1 = new Triangle();
-            t1.getTransformation().setTranslation(100, 0, 0);
-            t1.setColor(Color.Yellow);
-            t1.setP1(0, 0, 0);
-            t1.setP2(100, 0, 0);
-            t1.setP3(0, 100, 0);
-            addPrimitive(t1);
-
-            Triangle t2 = new Triangle();
-            t2.getTransformation().setTranslation(100, 0, 0);
-            t2.setColor(Color.Red);
-            t2.setP1(0, 0, 0);
-            t2.setP2(0, 0, 100);
-            t2.setP3(100, 0, 0);
-            addPrimitive(t2);
-
-            Triangle t3 = new Triangle();
-            t3.getTransformation().setTranslation(100, 0, 0);
-            t3.setColor(Color.Green);
-            t3.setP1(0, 0, 0);
-            t3.setP2(0, 100, 0);
-            t3.setP3(0, 0, 100);
-            addPrimitive(t3);
+        public OrthographicCamera GetYOrthographicCamera() {
+            return yCamera;
         }
 
-        public void addPrimitive(Primitive primitive) {
+        public OrthographicCamera GetZOrthographicCamera() {
+            return zCamera;
+        }
+
+        public void AddPrimitive(Primitive primitive) {
             primitives.Add(primitive);
         }
 
         public void Render() {
             foreach (Primitive primitive in primitives) {
-                primitive.render();
+                primitive.Render();
             }
         }
     }

@@ -12,30 +12,30 @@ namespace ManagedModeller {
         }
 
         private long id;
-        public long getId() { return id; }
+        public long GetId() { return id; }
 
         private string name;
-        public string getName() { return name; }
-        public void setName(string name) { this.name = name; }
+        public string GetName() { return name; }
+        public void SetName(string name) { this.name = name; }
 
         protected Transformation transformation = new Transformation();
         protected Vector3 color = new Vector3(1, 0, 0);
 
-        public Transformation getTransformation() { return transformation; }
-        public Vector3 getColor() { return color; }
+        public Transformation GetTransformation() { return transformation; }
+        public Vector3 GetColor() { return new Vector3(color); }
 
-        public void setColor(Color color) {
+        public void SetColor(Color color) {
             this.color = new Vector3(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f);
         }
 
-        public abstract void renderInternal();
+        public abstract void RenderInternal();
 
-        public void render() {
+        public void Render() {
             GL.PushMatrix();
-            transformation.applyMatrix();
+            transformation.ApplyMatrix();
 
             GL.Color3(color);
-            renderInternal();
+            RenderInternal();
 
             GL.PopMatrix();
         }
