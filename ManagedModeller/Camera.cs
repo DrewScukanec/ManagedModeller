@@ -30,7 +30,7 @@ namespace ManagedModeller {
         public int GetHeight() { return height; }
         public void SetHeight(int height) { this.height = height; }
 
-        public PolygonMode GetPolygonMode() { return PolygonMode.Fill; }
+        public PolygonMode GetPolygonMode() { return polygonMode; }
         public void SetPolygonMode(PolygonMode polygonMode) { this.polygonMode = polygonMode; }
 
         public Vector3 GetLocation() { return new Vector3(location); }

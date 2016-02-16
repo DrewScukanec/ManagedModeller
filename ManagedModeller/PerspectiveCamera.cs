@@ -8,7 +8,7 @@ namespace ManagedModeller {
         public float GetFovY() { return fovY; }
         public void SetFovY(float fovY) { this.fovY = fovY; }
 
-        public float GetAspectRatio() { return width / height; }
+        public float GetAspectRatio() { return ((float) width) / height; }
 
         public PerspectiveCamera() {
             SetLocation(new Vector3(100, 100, 100));

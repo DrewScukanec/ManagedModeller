@@ -15,8 +15,8 @@ namespace ManagedModeller {
         private List<Primitive> primitives = new List<Primitive>();
 
         public Scene() {
-            Sphere();
-            //Triangles();
+            //Sphere();
+            Triangles();
         }
 
         private void Sphere() {
