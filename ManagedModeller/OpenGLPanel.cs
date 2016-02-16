@@ -14,7 +14,8 @@ namespace ManagedModeller {
         public enum CameraType {
             XOrtho,
             YOrtho,
-            ZOrtho
+            ZOrtho,
+            Perspective
         }
 
         private bool loaded = false;
@@ -34,6 +35,7 @@ namespace ManagedModeller {
                 case CameraType.XOrtho: camera = scene.GetXOrthographicCamera(); break;
                 case CameraType.YOrtho: camera = scene.GetYOrthographicCamera(); break;
                 case CameraType.ZOrtho: camera = scene.GetZOrthographicCamera(); break;
+                case CameraType.Perspective: camera = scene.GetPerspectiveCamera(); break;
             }
             camera.SetWidth(glControl.Width);
             camera.SetHeight(glControl.Height);
@@ -106,7 +108,7 @@ namespace ManagedModeller {
             if (leftMousePressed) {
                 float modifier = (ModifierKeys.HasFlag(Keys.Control) ? 0.1f : 1.0f);
                 Vector2 shift = new Vector2((e.X - lastX) * modifier, -(e.Y - lastY) * modifier);
-                camera.Shift(shift);
+                camera.Shift(shift, ModifierKeys.HasFlag(Keys.Shift));
                 lastX = e.X;
                 lastY = e.Y;
                 glControl.Invalidate();

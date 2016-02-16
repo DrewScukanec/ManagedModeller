@@ -27,6 +27,9 @@ namespace ManagedModeller {
         public void SetColor(Color color) {
             this.color = new Vector3(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f);
         }
+        public void SetColor(float r, float g, float b) {
+            this.color = new Vector3(r, g, b);
+        }
 
         public abstract void RenderInternal();
 

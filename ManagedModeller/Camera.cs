@@ -15,11 +15,14 @@ namespace ManagedModeller {
         protected int height;
         protected PolygonMode polygonMode = PolygonMode.Fill;
         protected Vector3 location = new Vector3();
+        protected Vector3 lookAt = new Vector3();
         protected Vector3 eyeDirection = new Vector3();
-        protected Vector3 up = new Vector3();
+        protected Vector3 up = new Vector3(0, 1, 0);
         protected Vector3 right = new Vector3();
         protected float rotation = 0;
         protected float zoom = 1;
+        protected float near = 0.1f;
+        protected float far = 1000;
 
         public int GetWidth() { return width; }
         public void SetWidth(int width) { this.width = width; }
@@ -35,16 +38,24 @@ namespace ManagedModeller {
             this.location.X = location.X;
             this.location.Y = location.Y;
             this.location.Z = location.Z;
+            updateBasis();
         }
 
-        public void SetBasis(Vector3 eyeDirection, Vector3 up) {
-            this.eyeDirection = new Vector3(eyeDirection);
-            this.up = new Vector3(up);
-            this.right = Vector3.Cross(eyeDirection, up);
+        public void SetLookAt(Vector3 lookAt) {
+            this.lookAt = new Vector3(lookAt);
+            updateBasis();
+        }
 
+        public void SetUp(Vector3 up) {
+            this.up = new Vector3(up);
             this.up.Normalize();
-            this.right.Normalize();
-            this.eyeDirection.Normalize();
+            updateBasis();
+        }
+
+        private void updateBasis() {
+            eyeDirection = lookAt - location;
+            eyeDirection.Normalize();
+            this.right = Vector3.Cross(eyeDirection, up);
         }
 
         public float GetRotation() { return rotation; }
@@ -53,10 +64,13 @@ namespace ManagedModeller {
         public float GetZoom() { return zoom; }
         public void SetZoom(float zoom) { this.zoom = zoom; }
 
-        public void Shift(Vector2 offset) {
-            Vector3 threeDOffset = right * offset.X + up * offset.Y;
-            location -= threeDOffset;
-        }
+        public float GetNear() { return near; }
+        public void SetNear(float near) { this.near = near; }
+
+        public float GetFar() { return far; }
+        public void SetFar(float far) { this.far = far; }
+
+        public abstract void Shift(Vector2 offset, bool isShiftPressed);
 
         public abstract void SetProjectionMatrix();
 
@@ -65,9 +79,8 @@ namespace ManagedModeller {
             GL.PolygonMode(MaterialFace.Back, PolygonMode.Line);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
-            Matrix4 viewMatrix = Matrix4.LookAt(location, location + eyeDirection, up);
+            Matrix4 viewMatrix = Matrix4.LookAt(location, lookAt, up);
             GL.LoadMatrix(ref viewMatrix);
-            //GL.Translate(location);
             GL.Scale(zoom, zoom, zoom);
             GL.Rotate(rotation / ANGLE_SCALE, eyeDirection);
         }

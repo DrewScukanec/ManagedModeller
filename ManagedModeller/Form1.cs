@@ -26,6 +26,7 @@ namespace ManagedModeller
             openGLPanel1.setScene(scene);
             openGLPanel2.setScene(scene);
             openGLPanel3.setScene(scene);
+            openGLPanel4.setScene(scene);
         }
     }
 }

@@ -11,17 +11,17 @@ namespace ManagedModeller {
         private OrthographicCamera xCamera = OrthographicCamera.CreateXOrthographic();
         private OrthographicCamera yCamera = OrthographicCamera.CreateYOrthographic();
         private OrthographicCamera zCamera = OrthographicCamera.CreateZOrthographic();
-        private Camera perspectiveCamera;
+        private PerspectiveCamera perspectiveCamera = new PerspectiveCamera();
         private List<Primitive> primitives = new List<Primitive>();
 
         public Scene() {
-            //Sphere();
-            Triangles();
+            Sphere();
+            //Triangles();
         }
 
         private void Sphere() {
             Sphere s = new Sphere();
-            s.SetColor(Color.Azure);
+            s.SetColor(0, 1.0f, 1.0f);
             primitives.Add(s);
         }
 
@@ -79,6 +79,10 @@ namespace ManagedModeller {
 
         public OrthographicCamera GetZOrthographicCamera() {
             return zCamera;
+        }
+
+        public PerspectiveCamera GetPerspectiveCamera() {
+            return perspectiveCamera;
         }
 
         public void AddPrimitive(Primitive primitive) {
