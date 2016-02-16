@@ -16,17 +16,14 @@ namespace ManagedModeller
         private Scene scene = new Scene();
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (scene.IsDirty) {
-
-            }
             Application.Exit();
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            openGLPanel1.setScene(scene);
-            openGLPanel2.setScene(scene);
-            openGLPanel3.setScene(scene);
-            openGLPanel4.setScene(scene);
+            openGLPanel1.SetScene(scene);
+            openGLPanel2.SetScene(scene);
+            openGLPanel3.SetScene(scene);
+            openGLPanel4.SetScene(scene);
         }
     }
 }

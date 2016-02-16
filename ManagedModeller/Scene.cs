@@ -5,14 +5,14 @@ using System.Drawing;
 namespace ManagedModeller {
     public class Scene {
 
-        private bool dirty = false;
-        public bool IsDirty { get { return dirty; } }
+        public delegate void SceneCallback(Scene scene);
 
         private OrthographicCamera xCamera = OrthographicCamera.CreateXOrthographic();
         private OrthographicCamera yCamera = OrthographicCamera.CreateYOrthographic();
         private OrthographicCamera zCamera = OrthographicCamera.CreateZOrthographic();
         private PerspectiveCamera perspectiveCamera = new PerspectiveCamera();
         private List<Primitive> primitives = new List<Primitive>();
+        private event SceneCallback SceneUpdated;
 
         public Scene() {
             //Sphere();
@@ -49,6 +49,14 @@ namespace ManagedModeller {
             t3.SetP2(0, 100, 0);
             t3.SetP3(0, 0, 100);
             AddPrimitive(t3);
+        }
+
+        public void AddSceneUpdated(SceneCallback callback) {
+            SceneUpdated += callback;
+        }
+
+        public void RemoveSceneUpdated(SceneCallback callback) {
+            SceneUpdated -= callback;
         }
 
         public void RenderAxes() {

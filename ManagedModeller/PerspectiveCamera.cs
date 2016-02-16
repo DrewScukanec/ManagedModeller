@@ -6,7 +6,10 @@ namespace ManagedModeller {
         protected float fovY = MathHelper.Pi / 3;
 
         public float GetFovY() { return fovY; }
-        public void SetFovY(float fovY) { this.fovY = fovY; }
+        public void SetFovY(float fovY) {
+            this.fovY = fovY;
+            Updated();
+        }
 
         public float GetAspectRatio() { return ((float) width) / height; }
 
@@ -30,6 +33,7 @@ namespace ManagedModeller {
             } else {
                 location -= threeDOffset;
             }
+            UpdateBasis();
         }
     }
 }

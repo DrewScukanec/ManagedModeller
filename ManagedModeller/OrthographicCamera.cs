@@ -37,6 +37,8 @@ namespace ManagedModeller {
         public override void Shift(Vector2 offset, bool isShiftPressed) {
             Vector3 threeDOffset = right * offset.X + up * offset.Y;
             location -= threeDOffset;
+            lookAt -= threeDOffset;
+            UpdateBasis();
         }
     }
 }

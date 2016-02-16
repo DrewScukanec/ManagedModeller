@@ -23,23 +23,45 @@ namespace ManagedModeller {
         private Scene scene;
         private Camera camera;
         private CameraType cameraType;
+        private Scene.SceneCallback sceneCallback;
+        private Camera.CameraCallback cameraCallback;
 
         public OpenGLPanel() {
             InitializeComponent();
             glControl.MouseWheel += glControlOnMouseWheel;
         }
 
-        public void setScene(Scene scene) {
+        private void SceneUpdated(Scene scene) {
+            glControl.Invalidate();
+        }
+
+        private void CameraUpdated(Camera camera) {
+            glControl.Invalidate();
+        }
+
+        public void SetScene(Scene scene) {
+            if (this.scene != null && this.sceneCallback != null) {
+                this.scene.RemoveSceneUpdated(this.sceneCallback);
+            }
+            if (this.camera != null && this.cameraCallback != null) {
+                this.camera.RemoveCameraUpdated(this.cameraCallback);
+            }
+
             this.scene = scene;
+            this.sceneCallback = new Scene.SceneCallback(SceneUpdated);
+            this.scene.AddSceneUpdated(this.sceneCallback);
+
             switch (cameraType) {
                 case CameraType.XOrtho: camera = scene.GetXOrthographicCamera(); break;
                 case CameraType.YOrtho: camera = scene.GetYOrthographicCamera(); break;
                 case CameraType.ZOrtho: camera = scene.GetZOrthographicCamera(); break;
                 case CameraType.Perspective: camera = scene.GetPerspectiveCamera(); break;
             }
+            this.cameraCallback = new Camera.CameraCallback(CameraUpdated);
+            camera.AddCameraUpdated(this.cameraCallback);
+
             camera.SetWidth(glControl.Width);
             camera.SetHeight(glControl.Height);
-            glControl.Invalidate();
         }
 
         [Category("OpenGL"), Description("Specifies the camera type of the control")]
@@ -111,12 +133,10 @@ namespace ManagedModeller {
                 camera.Shift(shift, ModifierKeys.HasFlag(Keys.Shift));
                 lastX = e.X;
                 lastY = e.Y;
-                glControl.Invalidate();
             } else if (rightMousePressed) {
                 float rotation = (e.Y - lastPhi) * (ModifierKeys.HasFlag(Keys.Control) ? 0.1f : 1.0f);
                 camera.SetRotation(camera.GetRotation() + rotation);
                 lastPhi = e.Y;
-                glControl.Invalidate();
             }
         }
 
@@ -139,7 +159,6 @@ namespace ManagedModeller {
             camera.SetHeight(glControl.Height);
             camera.SetWidth(glControl.Width);
             SetupViewport();
-            glControl.Invalidate();
         }
 
         private void glControlOnMouseWheel(object sender, MouseEventArgs e) {
@@ -147,13 +166,11 @@ namespace ManagedModeller {
                 float modifier = (ModifierKeys.HasFlag(Keys.Control) ? 0.1f : 1.0f);
                 float zoom = (float)Math.Exp(e.Delta / 750.0 * modifier);
                 camera.SetZoom(camera.GetZoom()* zoom);
-                glControl.Invalidate();
             }
         }
 
         private void glControlOnMouseDoubleClick(object sender, MouseEventArgs e) {
             camera.SetPolygonMode(camera.GetPolygonMode() == PolygonMode.Fill ? PolygonMode.Line : PolygonMode.Fill);
-            glControl.Invalidate();
         }
     }
 
