@@ -12,7 +12,7 @@ namespace ManagedModeller {
         private OrthographicCamera zCamera = OrthographicCamera.CreateZOrthographic();
         private PerspectiveCamera perspectiveCamera = new PerspectiveCamera();
         private List<Primitive> primitives = new List<Primitive>();
-        private event SceneCallback SceneUpdated;
+        private event SceneCallback sceneUpdated;
 
         public Scene() {
             //Sphere();
@@ -52,11 +52,17 @@ namespace ManagedModeller {
         }
 
         public void AddSceneUpdated(SceneCallback callback) {
-            SceneUpdated += callback;
+            sceneUpdated += callback;
         }
 
         public void RemoveSceneUpdated(SceneCallback callback) {
-            SceneUpdated -= callback;
+            sceneUpdated -= callback;
+        }
+
+        private void Updated() {
+            if (sceneUpdated != null) {
+                sceneUpdated.Invoke(this);
+            }
         }
 
         public void RenderAxes() {
@@ -95,6 +101,7 @@ namespace ManagedModeller {
 
         public void AddPrimitive(Primitive primitive) {
             primitives.Add(primitive);
+            Updated();
         }
 
         public void Render() {
