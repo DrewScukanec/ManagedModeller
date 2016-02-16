@@ -14,7 +14,7 @@ namespace ManagedModeller {
 
         private Vector3d center = new Vector3d();
         private double radius = 1.0;
-        private int maxDepth = 2;
+        private int maxDepth = 4;
 
         public void SetCenter(double x, double y, double z) { center.X = x; center.Y = y; center.Z = z; }
         public void SetRadius(double radius) { this.radius = radius; }
@@ -49,12 +49,17 @@ namespace ManagedModeller {
                 return;
             }
 
-            Vector3 mid = a + b + c;
-            mid.Normalize();
+            Vector3 midAtoB = a + b;
+            midAtoB.Normalize();
+            Vector3 midBtoC = b + c;
+            midBtoC.Normalize();
+            Vector3 midCtoA = c + a;
+            midCtoA.Normalize();
 
-            Recurse(a, b, mid, depth + 1);
-            Recurse(b, c, mid, depth + 1);
-            Recurse(c, a, mid, depth + 1);
+            Recurse(midCtoA, a, midAtoB, depth + 1);
+            Recurse(midAtoB, b, midBtoC, depth + 1);
+            Recurse(midBtoC, c, midCtoA, depth + 1);
+            Recurse(midAtoB, midBtoC, midCtoA, depth + 1);
         }
     }
 }

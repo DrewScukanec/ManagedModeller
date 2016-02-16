@@ -15,8 +15,8 @@ namespace ManagedModeller {
         private event SceneCallback sceneUpdated;
 
         public Scene() {
-            //Sphere();
-            Triangles();
+            Sphere();
+            //Triangles();
         }
 
         private void Sphere() {
