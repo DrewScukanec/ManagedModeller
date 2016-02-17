@@ -3,6 +3,19 @@ using OpenTK.Graphics.OpenGL;
 
 namespace ManagedModeller {
     public class Transformation {
+
+        public static Transformation Translate(double x, double y, double z) {
+            Transformation result = new Transformation();
+            result.SetTranslation(x, y, z);
+            return result;
+        }
+
+        public static Transformation Scale(double x, double y, double z) {
+            Transformation result = new Transformation();
+            result.SetScale(x, y, z);
+            return result;
+        }
+
         private Vector3d translation = new Vector3d();
         private Vector3d scale = new Vector3d(1, 1, 1);
 

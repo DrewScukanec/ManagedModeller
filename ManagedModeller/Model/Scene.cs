@@ -21,14 +21,14 @@ namespace ManagedModeller {
 
         private void Sphere() {
             Sphere s = new Sphere();
-            s.GetTransformation().SetScale(50, 50, 50);
+            s.SetTransformation(Transformation.Scale(50, 50, 50));
             s.SetColor(0, 1.0f, 1.0f);
             primitives.Add(s);
         }
 
         private void Triangles() {
             Triangle t1 = new Triangle();
-            t1.GetTransformation().SetTranslation(100, 0, 0);
+            t1.SetTransformation(Transformation.Translate(100, 0, 0));
             t1.SetColor(Color.Yellow);
             t1.SetP1(0, 0, 0);
             t1.SetP2(100, 0, 0);
@@ -36,7 +36,7 @@ namespace ManagedModeller {
             AddPrimitive(t1);
 
             Triangle t2 = new Triangle();
-            t2.GetTransformation().SetTranslation(100, 0, 0);
+            t2.SetTransformation(Transformation.Translate(100, 0, 0));
             t2.SetColor(Color.Red);
             t2.SetP1(0, 0, 0);
             t2.SetP2(0, 0, 100);
@@ -44,7 +44,7 @@ namespace ManagedModeller {
             AddPrimitive(t2);
 
             Triangle t3 = new Triangle();
-            t3.GetTransformation().SetTranslation(100, 0, 0);
+            t3.SetTransformation(Transformation.Translate(100, 0, 0));
             t3.SetColor(Color.Green);
             t3.SetP1(0, 0, 0);
             t3.SetP2(0, 100, 0);
