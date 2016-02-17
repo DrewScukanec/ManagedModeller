@@ -60,7 +60,7 @@ namespace ManagedModeller {
             sceneUpdated -= callback;
         }
 
-        private void Updated() {
+        private void NotifyListeners() {
             if (sceneUpdated != null) {
                 sceneUpdated.Invoke(this);
             }
@@ -100,9 +100,14 @@ namespace ManagedModeller {
             return perspectiveCamera;
         }
 
+        private void PrimitiveUpdated(Primitive primitive) {
+            NotifyListeners();
+        }
+
         public void AddPrimitive(Primitive primitive) {
             primitives.Add(primitive);
-            Updated();
+            primitive.AddPrimitiveUpdated(PrimitiveUpdated);
+            NotifyListeners();
         }
 
         public void Render() {

@@ -23,25 +23,11 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.scalePanel = new ManagedModeller.Controls.Vector3Panel();
-            this.translatePanel = new ManagedModeller.Controls.Vector3Panel();
             this.translateLabel = new System.Windows.Forms.Label();
             this.scaleLabel = new System.Windows.Forms.Label();
+            this.translatePanel = new ManagedModeller.Controls.Vector3Panel();
+            this.scalePanel = new ManagedModeller.Controls.Vector3Panel();
             this.SuspendLayout();
-            // 
-            // scalePanel
-            // 
-            this.scalePanel.Location = new System.Drawing.Point(3, 113);
-            this.scalePanel.Name = "scalePanel";
-            this.scalePanel.Size = new System.Drawing.Size(161, 78);
-            this.scalePanel.TabIndex = 0;
-            // 
-            // translatePanel
-            // 
-            this.translatePanel.Location = new System.Drawing.Point(3, 16);
-            this.translatePanel.Name = "translatePanel";
-            this.translatePanel.Size = new System.Drawing.Size(161, 78);
-            this.translatePanel.TabIndex = 1;
             // 
             // translateLabel
             // 
@@ -51,7 +37,6 @@
             this.translateLabel.Size = new System.Drawing.Size(59, 13);
             this.translateLabel.TabIndex = 2;
             this.translateLabel.Text = "Translation";
-            this.translateLabel.DoubleClick += new System.EventHandler(this.translateLabel_DoubleClick);
             // 
             // scaleLabel
             // 
@@ -61,6 +46,20 @@
             this.scaleLabel.Size = new System.Drawing.Size(34, 13);
             this.scaleLabel.TabIndex = 3;
             this.scaleLabel.Text = "Scale";
+            // 
+            // translatePanel
+            // 
+            this.translatePanel.Location = new System.Drawing.Point(3, 16);
+            this.translatePanel.Name = "translatePanel";
+            this.translatePanel.Size = new System.Drawing.Size(161, 78);
+            this.translatePanel.TabIndex = 1;
+            // 
+            // scalePanel
+            // 
+            this.scalePanel.Location = new System.Drawing.Point(3, 113);
+            this.scalePanel.Name = "scalePanel";
+            this.scalePanel.Size = new System.Drawing.Size(161, 78);
+            this.scalePanel.TabIndex = 0;
             // 
             // TransformationPanel
             // 

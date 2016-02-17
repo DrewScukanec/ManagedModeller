@@ -16,9 +16,20 @@ namespace ManagedModeller {
         private double radius = 1.0;
         private int maxDepth = 4;
 
-        public void SetCenter(double x, double y, double z) { center.X = x; center.Y = y; center.Z = z; }
-        public void SetRadius(double radius) { this.radius = radius; }
-        public void SetMaxDepth(int maxDepth) { this.maxDepth = maxDepth; }
+        public void SetCenter(double x, double y, double z) {
+            center.X = x;
+            center.Y = y;
+            center.Z = z;
+            NotifyListeners();
+        }
+        public void SetRadius(double radius) {
+            this.radius = radius;
+            NotifyListeners();
+        }
+        public void SetMaxDepth(int maxDepth) {
+            this.maxDepth = maxDepth;
+            NotifyListeners();
+        }
 
         public void GetCenter(out Vector3d result) { result = new Vector3d(center); }
         public Vector3d GetCenter() { return new Vector3d(center); }

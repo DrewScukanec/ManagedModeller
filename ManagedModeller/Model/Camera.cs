@@ -5,7 +5,7 @@ using System.Drawing;
 namespace ManagedModeller {
     public abstract class Camera {
 
-        public delegate void CameraCallback(Camera camera);
+        public delegate void CameraUpdated(Camera camera);
 
         private const float ANGLE_SCALE = 2;
 
@@ -13,7 +13,7 @@ namespace ManagedModeller {
         private static Vector3 Y_AXIS = new Vector3(0, 1, 0);
         private static Vector3 Z_AXIS = new Vector3(0, 0, 1);
 
-        private event CameraCallback cameraUpdated;
+        private event CameraUpdated cameraUpdated;
         protected int width;
         protected int height;
         protected PolygonMode polygonMode = PolygonMode.Fill;
@@ -27,30 +27,30 @@ namespace ManagedModeller {
         protected float near = 0.1f;
         protected float far = 1000;
 
-        public void AddCameraUpdated(CameraCallback callback) {
+        public void AddCameraUpdated(CameraUpdated callback) {
             cameraUpdated += callback;
         }
 
-        public void RemoveCameraUpdated(CameraCallback callback) {
+        public void RemoveCameraUpdated(CameraUpdated callback) {
             cameraUpdated -= callback;
         }
 
         public int GetWidth() { return width; }
         public void SetWidth(int width) {
             this.width = width;
-            Updated();
+            NotifyListeners();
         }
 
         public int GetHeight() { return height; }
         public void SetHeight(int height) {
             this.height = height;
-            Updated();
+            NotifyListeners();
         }
 
         public PolygonMode GetPolygonMode() { return polygonMode; }
         public void SetPolygonMode(PolygonMode polygonMode) {
             this.polygonMode = polygonMode;
-            Updated();
+            NotifyListeners();
         }
 
         public Vector3 GetLocation() { return new Vector3(location); }
@@ -76,34 +76,34 @@ namespace ManagedModeller {
             eyeDirection = lookAt - location;
             eyeDirection.Normalize();
             this.right = Vector3.Cross(eyeDirection, up);
-            Updated();
+            NotifyListeners();
         }
 
         public float GetRotation() { return rotation; }
         public void SetRotation(float rotation) {
             this.rotation = rotation;
-            Updated();
+            NotifyListeners();
         }
 
         public float GetZoom() { return zoom; }
         public void SetZoom(float zoom) {
             this.zoom = zoom;
-            Updated();
+            NotifyListeners();
         }
 
         public float GetNear() { return near; }
         public void SetNear(float near) {
             this.near = near;
-            Updated();
+            NotifyListeners();
         }
 
         public float GetFar() { return far; }
         public void SetFar(float far) {
             this.far = far;
-            Updated();
+            NotifyListeners();
         }
 
-        protected void Updated() {
+        protected void NotifyListeners() {
             if (cameraUpdated != null) {
                 cameraUpdated.Invoke(this);
             }

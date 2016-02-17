@@ -20,33 +20,39 @@ namespace ManagedModeller {
             p1.X = v.X;
             p1.Y = v.Y;
             p1.Z = v.Z;
+            NotifyListeners();
         }
         public void SetP1(double x, double y, double z) {
             p1.X = x;
             p1.Y = y;
             p1.Z = z;
+            NotifyListeners();
         }
 
         public void SetP2(Vector3d v) {
             p2.X = v.X;
             p2.Y = v.Y;
             p2.Z = v.Z;
+            NotifyListeners();
         }
         public void SetP2(double x, double y, double z) {
             p2.X = x;
             p2.Y = y;
             p2.Z = z;
+            NotifyListeners();
         }
 
         public void SetP3(Vector3d v) {
             p3.X = v.X;
             p3.Y = v.Y;
             p3.Z = v.Z;
+            NotifyListeners();
         }
         public void SetP3(double x, double y, double z) {
             p3.X = x;
             p3.Y = y;
             p3.Z = z;
+            NotifyListeners();
         }
 
         public override void RenderInternal() {

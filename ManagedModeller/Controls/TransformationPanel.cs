@@ -27,14 +27,6 @@ namespace ManagedModeller.Controls {
             this.transformation = new Transformation(transformation);
         }
 
-        private void translateLabel_DoubleClick(object sender, EventArgs e) {
-            if (translatePanel.Visible) {
-                translatePanel.Hide();
-            } else {
-                translatePanel.Show();
-            }
-        }
-
         private void TranslationUpdated(double x, double y, double z) {
             transformation.SetTranslation(x, y, z);
             NotifyListeners();
