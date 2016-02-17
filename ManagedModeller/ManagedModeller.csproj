@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\TransformationPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TransformationPanel.Designer.cs">
+      <DependentUpon>TransformationPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Vector3Panel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -80,6 +86,9 @@
     <Compile Include="Model\Sphere.cs" />
     <Compile Include="Model\Transformation.cs" />
     <Compile Include="Model\Triangle.cs" />
+    <EmbeddedResource Include="Controls\TransformationPanel.resx">
+      <DependentUpon>TransformationPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Vector3Panel.resx">
       <DependentUpon>Vector3Panel.cs</DependentUpon>
     </EmbeddedResource>

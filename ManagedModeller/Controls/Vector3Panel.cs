@@ -16,6 +16,14 @@ namespace ManagedModeller.Controls {
             InitializeComponent();
         }
 
+        public void AddVector3Updated(Vector3Updated callback) {
+            vector3Updated += callback;
+        }
+
+        public void RemoveVector3Updated(Vector3Updated callback) {
+            vector3Updated -= callback;
+        }
+
         public void SetVector(Vector3d vector) {
             lastGoodVector = new Vector3d(vector);
             UpdateTextBoxesFromVector();

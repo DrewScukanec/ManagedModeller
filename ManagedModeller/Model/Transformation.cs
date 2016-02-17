@@ -6,6 +6,12 @@ namespace ManagedModeller {
         private Vector3d translation = new Vector3d();
         private Vector3d scale = new Vector3d(1, 1, 1);
 
+        public Transformation() {}
+        public Transformation(Transformation clone) {
+            translation = new Vector3d(clone.translation);
+            scale = new Vector3d(clone.scale);
+        }
+
         public void GetTranslation(out Vector3d result) { result = new Vector3d(translation); }
         public Vector3d GetTranslation() { return new Vector3d(translation); }
 
