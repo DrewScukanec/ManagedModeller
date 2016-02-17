@@ -23,7 +23,7 @@ namespace ManagedModeller {
             Sphere s = new Sphere();
             s.SetTransformation(Transformation.Scale(50, 50, 50));
             s.SetColor(0, 1.0f, 1.0f);
-            primitives.Add(s);
+            AddPrimitive(s);
         }
 
         private void Triangles() {
@@ -108,6 +108,14 @@ namespace ManagedModeller {
             primitives.Add(primitive);
             primitive.AddPrimitiveUpdated(PrimitiveUpdated);
             NotifyListeners();
+        }
+
+        public int GetPrimitiveCount() {
+            return primitives.Count;
+        }
+
+        public Primitive GetPrimitive(int index) {
+            return primitives[index];
         }
 
         public void Render() {

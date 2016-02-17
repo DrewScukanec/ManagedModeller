@@ -25,6 +25,8 @@ namespace ManagedModeller.Controls {
 
         public void SetTransformation(Transformation transformation) {
             this.transformation = new Transformation(transformation);
+            translatePanel.SetVector(transformation.GetTranslation());
+            scalePanel.SetVector(transformation.GetScale());
         }
 
         private void TranslationUpdated(double x, double y, double z) {
