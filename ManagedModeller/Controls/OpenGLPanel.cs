@@ -24,7 +24,7 @@ namespace ManagedModeller {
         private Camera camera;
         private CameraType cameraType;
         private Scene.SceneCallback sceneCallback;
-        private Camera.CameraCallback cameraCallback;
+        private Camera.CameraUpdated cameraCallback;
 
         public OpenGLPanel() {
             InitializeComponent();
@@ -57,7 +57,7 @@ namespace ManagedModeller {
                 case CameraType.ZOrtho: camera = scene.GetZOrthographicCamera(); break;
                 case CameraType.Perspective: camera = scene.GetPerspectiveCamera(); break;
             }
-            this.cameraCallback = new Camera.CameraCallback(CameraUpdated);
+            this.cameraCallback = new Camera.CameraUpdated(CameraUpdated);
             camera.AddCameraUpdated(this.cameraCallback);
 
             camera.SetWidth(glControl.Width);
