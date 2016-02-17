@@ -21,6 +21,7 @@ namespace ManagedModeller {
 
         private void Sphere() {
             Sphere s = new Sphere();
+            s.GetTransformation().SetScale(50, 50, 50);
             s.SetColor(0, 1.0f, 1.0f);
             primitives.Add(s);
         }
