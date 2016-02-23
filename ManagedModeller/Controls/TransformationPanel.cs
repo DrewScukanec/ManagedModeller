@@ -7,20 +7,12 @@ namespace ManagedModeller.Controls {
         public delegate void TransformationUpdated(Transformation transformation);
 
         private Transformation transformation;
-        private event TransformationUpdated transformationUpdated;
+        public event TransformationUpdated transformationUpdated;
 
         public TransformationPanel() {
             InitializeComponent();
-            translatePanel.AddVector3Updated(new Vector3Panel.Vector3Updated(TranslationUpdated));
-            scalePanel.AddVector3Updated(new Vector3Panel.Vector3Updated(ScaleUpdated));
-        }
-
-        public void AddTransformationUpdated(TransformationUpdated callback) {
-            transformationUpdated += callback;
-        }
-
-        public void RemoveTransformationUpdated(TransformationUpdated callback) {
-            transformationUpdated -= callback;
+            translatePanel.vector3Updated += TranslationUpdated;
+            scalePanel.vector3Updated += ScaleUpdated;
         }
 
         public void SetTransformation(Transformation transformation) {

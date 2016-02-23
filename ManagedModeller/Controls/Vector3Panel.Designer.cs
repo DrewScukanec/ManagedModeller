@@ -93,7 +93,7 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Name = "Vector3Panel";
-            this.Size = new System.Drawing.Size(161, 78);
+            this.Size = new System.Drawing.Size(460, 188);
             this.ResumeLayout(false);
             this.PerformLayout();
 

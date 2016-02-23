@@ -10,18 +10,10 @@ namespace ManagedModeller.Controls {
         public delegate void Vector3Updated(double x, double y, double z);
 
         private Vector3d lastGoodVector;
-        private event Vector3Updated vector3Updated;
+        public event Vector3Updated vector3Updated;
 
         public Vector3Panel() {
             InitializeComponent();
-        }
-
-        public void AddVector3Updated(Vector3Updated callback) {
-            vector3Updated += callback;
-        }
-
-        public void RemoveVector3Updated(Vector3Updated callback) {
-            vector3Updated -= callback;
         }
 
         public void SetVector(Vector3d vector) {

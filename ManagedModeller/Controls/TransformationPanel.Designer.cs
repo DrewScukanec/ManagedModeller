@@ -24,9 +24,9 @@
         /// </summary>
         private void InitializeComponent() {
             this.translateLabel = new System.Windows.Forms.Label();
-            this.scaleLabel = new System.Windows.Forms.Label();
-            this.translatePanel = new ManagedModeller.Controls.Vector3Panel();
             this.scalePanel = new ManagedModeller.Controls.Vector3Panel();
+            this.translatePanel = new ManagedModeller.Controls.Vector3Panel();
+            this.scaleLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // translateLabel
@@ -38,14 +38,12 @@
             this.translateLabel.TabIndex = 2;
             this.translateLabel.Text = "Translation";
             // 
-            // scaleLabel
+            // scalePanel
             // 
-            this.scaleLabel.AutoSize = true;
-            this.scaleLabel.Location = new System.Drawing.Point(0, 97);
-            this.scaleLabel.Name = "scaleLabel";
-            this.scaleLabel.Size = new System.Drawing.Size(34, 13);
-            this.scaleLabel.TabIndex = 3;
-            this.scaleLabel.Text = "Scale";
+            this.scalePanel.Location = new System.Drawing.Point(3, 113);
+            this.scalePanel.Name = "scalePanel";
+            this.scalePanel.Size = new System.Drawing.Size(161, 78);
+            this.scalePanel.TabIndex = 0;
             // 
             // translatePanel
             // 
@@ -54,12 +52,14 @@
             this.translatePanel.Size = new System.Drawing.Size(161, 78);
             this.translatePanel.TabIndex = 1;
             // 
-            // scalePanel
+            // scaleLabel
             // 
-            this.scalePanel.Location = new System.Drawing.Point(3, 113);
-            this.scalePanel.Name = "scalePanel";
-            this.scalePanel.Size = new System.Drawing.Size(161, 78);
-            this.scalePanel.TabIndex = 0;
+            this.scaleLabel.AutoSize = true;
+            this.scaleLabel.Location = new System.Drawing.Point(0, 97);
+            this.scaleLabel.Name = "scaleLabel";
+            this.scaleLabel.Size = new System.Drawing.Size(34, 13);
+            this.scaleLabel.TabIndex = 3;
+            this.scaleLabel.Text = "Scale";
             // 
             // TransformationPanel
             // 
