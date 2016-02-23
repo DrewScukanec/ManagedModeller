@@ -9,23 +9,23 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ManagedModeller.Controls {
-    public partial class DoublePanel : UserControl {
+    public partial class FloatPanel : UserControl {
 
         private const string FORMAT = "0.######";
 
-        public delegate void ValueUpdated(double newValue);
+        public delegate void ValueUpdated(float newValue);
 
-        private double lastGoodValue;
+        private float lastGoodValue;
         public event ValueUpdated valueUpdated;
 
-        public DoublePanel() {
+        public FloatPanel() {
             InitializeComponent();
         }
 
         [Category("User"), Description("Specifies the value of the textbox")]
-        public double Value {
+        public float Value {
             get {
-                return Double.Parse(textBox.Text);
+                return Single.Parse(textBox.Text);
             }
             set {
                 lastGoodValue = value;
@@ -50,8 +50,8 @@ namespace ManagedModeller.Controls {
         }
 
         private void TryUpdateValue() {
-            double result = 0;
-            bool success = Double.TryParse(textBox.Text, out result);
+            float result = 0;
+            bool success = Single.TryParse(textBox.Text, out result);
             if (success) {
                 lastGoodValue = result;
                 NotifyListeners();

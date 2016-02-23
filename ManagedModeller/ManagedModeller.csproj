@@ -58,6 +58,12 @@
     <Compile Include="Controls\DoublePanel.Designer.cs">
       <DependentUpon>DoublePanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FloatPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\FloatPanel.Designer.cs">
+      <DependentUpon>FloatPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TransformationPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     <Compile Include="Model\Triangle.cs" />
     <EmbeddedResource Include="Controls\DoublePanel.resx">
       <DependentUpon>DoublePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FloatPanel.resx">
+      <DependentUpon>FloatPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\TransformationPanel.resx">
       <DependentUpon>TransformationPanel.cs</DependentUpon>
