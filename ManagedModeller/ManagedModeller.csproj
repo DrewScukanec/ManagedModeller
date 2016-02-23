@@ -76,6 +76,12 @@
     <Compile Include="Controls\Vector3Panel.Designer.cs">
       <DependentUpon>Vector3Panel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Vector4Panel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Vector4Panel.Designer.cs">
+      <DependentUpon>Vector4Panel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Camera.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -109,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Vector3Panel.resx">
       <DependentUpon>Vector3Panel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Vector4Panel.resx">
+      <DependentUpon>Vector4Panel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using OpenTK;
 using System.Windows.Forms;
 
 namespace ManagedModeller.Controls {
@@ -17,17 +17,17 @@ namespace ManagedModeller.Controls {
 
         public void SetTransformation(Transformation transformation) {
             this.transformation = new Transformation(transformation);
-            translatePanel.SetVector(transformation.GetTranslation());
-            scalePanel.SetVector(transformation.GetScale());
+            translatePanel.Value = transformation.GetTranslation();
+            scalePanel.Value = transformation.GetScale();
         }
 
-        private void TranslationUpdated(double x, double y, double z) {
-            transformation.SetTranslation(x, y, z);
+        private void TranslationUpdated(Vector3d newValue) {
+            transformation.SetTranslation(newValue);
             NotifyListeners();
         }
 
-        private void ScaleUpdated(double x, double y, double z) {
-            transformation.SetScale(x, y, z);
+        private void ScaleUpdated(Vector3d newValue) {
+            transformation.SetScale(newValue);
             NotifyListeners();
         }
 
