@@ -3,6 +3,8 @@ using OpenTK.Graphics.OpenGL;
 
 namespace ManagedModeller {
     public class Sphere : Primitive {
+
+        #region Static
         private static Vector3 TOP = new Vector3(0, 1, 0);
         private static Vector3 BOTTOM = new Vector3(0, -1, 0);
 
@@ -11,31 +13,46 @@ namespace ManagedModeller {
 
         private static Vector3 FRONT = new Vector3(0, 0, 1);
         private static Vector3 BACK = new Vector3(0, 0, -1);
+        #endregion
 
+        #region Center
         private Vector3d center = new Vector3d();
-        private double radius = 1.0;
-        private int maxDepth = 4;
-
+        public Vector3d Center {
+            get { return new Vector3d(center); }
+            set { SetCenter(value.X, value.Y, value.Z); }
+        }
+        public void GetCenter(out Vector3d result) { result = new Vector3d(center); }
         public void SetCenter(double x, double y, double z) {
             center.X = x;
             center.Y = y;
             center.Z = z;
             NotifyListeners();
         }
-        public void SetRadius(double radius) {
-            this.radius = radius;
-            NotifyListeners();
-        }
-        public void SetMaxDepth(int maxDepth) {
-            this.maxDepth = maxDepth;
-            NotifyListeners();
-        }
+        #endregion
 
-        public void GetCenter(out Vector3d result) { result = new Vector3d(center); }
-        public Vector3d GetCenter() { return new Vector3d(center); }
-        public double GetRadius() { return radius; }
-        public int GetMaxDepth() { return maxDepth; }
+        #region Radius
+        private double radius = 1.0;
+        public double Radius {
+            get { return radius; }
+            set {
+                radius = value;
+                NotifyListeners();
+            }
+        }
+        #endregion
 
+        #region MaxDepth
+        private int maxDepth = 4;
+        public int MaxDepth {
+            get { return maxDepth; }
+            set {
+                maxDepth = value;
+                NotifyListeners();
+            }
+        }
+        #endregion
+
+        #region Rendering
         public override void RenderInternal() {
             GL.Begin(PrimitiveType.Triangles);
 
@@ -72,5 +89,6 @@ namespace ManagedModeller {
             Recurse(midBtoC, c, midCtoA, depth + 1);
             Recurse(midAtoB, midBtoC, midCtoA, depth + 1);
         }
+        #endregion
     }
 }

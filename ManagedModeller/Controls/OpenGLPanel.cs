@@ -49,15 +49,15 @@ namespace ManagedModeller {
             this.scene.sceneUpdated += SceneUpdated;
 
             switch (cameraType) {
-                case CameraType.XOrtho: camera = scene.GetXOrthographicCamera(); break;
-                case CameraType.YOrtho: camera = scene.GetYOrthographicCamera(); break;
-                case CameraType.ZOrtho: camera = scene.GetZOrthographicCamera(); break;
-                case CameraType.Perspective: camera = scene.GetPerspectiveCamera(); break;
+                case CameraType.XOrtho: camera = scene.XOrthographicCamera; break;
+                case CameraType.YOrtho: camera = scene.YOrthographicCamera; break;
+                case CameraType.ZOrtho: camera = scene.ZOrthographicCamera; break;
+                case CameraType.Perspective: camera = scene.PerspectiveCamera; break;
             }
             camera.cameraUpdated += CameraUpdated;
 
-            camera.SetWidth(glControl.Width);
-            camera.SetHeight(glControl.Height);
+            camera.Width = glControl.Width;
+            camera.Height = glControl.Height;
         }
 
         [Category("OpenGL"), Description("Specifies the camera type of the control")]
@@ -152,8 +152,8 @@ namespace ManagedModeller {
                 return;
 
             glControl.MakeCurrent();
-            camera.SetHeight(glControl.Height);
-            camera.SetWidth(glControl.Width);
+            camera.Height = glControl.Height;
+            camera.Width = glControl.Width;
             SetupViewport();
         }
 
@@ -161,12 +161,12 @@ namespace ManagedModeller {
             if (!leftMousePressed && !rightMousePressed) {
                 float modifier = (ModifierKeys.HasFlag(Keys.Control) ? 0.1f : 1.0f);
                 float zoom = (float)Math.Exp(e.Delta / 750.0 * modifier);
-                camera.SetZoom(camera.GetZoom()* zoom);
+                camera.Zoom = camera.Zoom * zoom;
             }
         }
 
         private void glControlOnMouseDoubleClick(object sender, MouseEventArgs e) {
-            camera.SetPolygonMode(camera.GetPolygonMode() == PolygonMode.Fill ? PolygonMode.Line : PolygonMode.Fill);
+            camera.PolygonMode = camera.PolygonMode == PolygonMode.Fill ? PolygonMode.Line : PolygonMode.Fill;
         }
     }
 

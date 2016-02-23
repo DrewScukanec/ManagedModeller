@@ -5,47 +5,49 @@ using System.Drawing;
 namespace ManagedModeller {
     public abstract class Camera {
 
-        public delegate void CameraUpdated(Camera camera);
-
+        #region Static
         private const float ANGLE_SCALE = 2;
+        #endregion
 
-        private static Vector3 X_AXIS = new Vector3(1, 0, 0);
-        private static Vector3 Y_AXIS = new Vector3(0, 1, 0);
-        private static Vector3 Z_AXIS = new Vector3(0, 0, 1);
-
+        #region Event Handling
+        public delegate void CameraUpdated(Camera camera);
         public event CameraUpdated cameraUpdated;
 
+        protected void NotifyListeners() {
+            if (cameraUpdated != null) {
+                cameraUpdated.Invoke(this);
+            }
+        }
+        #endregion
+
         protected int width;
+        public int Width {
+            get { return width; }
+            set {
+                width = value;
+                NotifyListeners();
+            }
+        }
+
         protected int height;
+        public int Height {
+            get { return height; }
+            set {
+                height = value;
+                NotifyListeners();
+            }
+        }
+
         protected PolygonMode polygonMode = PolygonMode.Fill;
+        public PolygonMode PolygonMode {
+            get { return polygonMode; }
+            set {
+                polygonMode = value;
+                NotifyListeners();
+            }
+        }
+
         protected Vector3 location = new Vector3();
-        protected Vector3 lookAt = new Vector3();
-        protected Vector3 eyeDirection = new Vector3();
-        protected Vector3 up = new Vector3(0, 1, 0);
-        protected Vector3 right = new Vector3();
-        protected float rotation = 0;
-        protected float zoom = 1;
-        protected float near = 0.1f;
-        protected float far = 1000;
-
-        public int GetWidth() { return width; }
-        public void SetWidth(int width) {
-            this.width = width;
-            NotifyListeners();
-        }
-
-        public int GetHeight() { return height; }
-        public void SetHeight(int height) {
-            this.height = height;
-            NotifyListeners();
-        }
-
-        public PolygonMode GetPolygonMode() { return polygonMode; }
-        public void SetPolygonMode(PolygonMode polygonMode) {
-            this.polygonMode = polygonMode;
-            NotifyListeners();
-        }
-
         public Vector3 GetLocation() { return new Vector3(location); }
         public void SetLocation(Vector3 location) {
             this.location.X = location.X;
@@ -54,17 +56,21 @@ namespace ManagedModeller {
             UpdateBasis();
         }
 
+        protected Vector3 lookAt = new Vector3();
         public void SetLookAt(Vector3 lookAt) {
             this.lookAt = new Vector3(lookAt);
             UpdateBasis();
         }
 
+        protected Vector3 up = new Vector3(0, 1, 0);
         public void SetUp(Vector3 up) {
             this.up = new Vector3(up);
             this.up.Normalize();
             UpdateBasis();
         }
 
+        protected Vector3 eyeDirection = new Vector3();
+        protected Vector3 right = new Vector3();
         protected void UpdateBasis() {
             eyeDirection = lookAt - location;
             eyeDirection.Normalize();
@@ -72,33 +78,37 @@ namespace ManagedModeller {
             NotifyListeners();
         }
 
+        protected float rotation = 0;
         public float GetRotation() { return rotation; }
         public void SetRotation(float rotation) {
             this.rotation = rotation;
             NotifyListeners();
         }
 
-        public float GetZoom() { return zoom; }
-        public void SetZoom(float zoom) {
-            this.zoom = zoom;
-            NotifyListeners();
+        protected float zoom = 1;
+        public float Zoom {
+            get { return zoom; }
+            set {
+                zoom = value;
+                NotifyListeners();
+            }
         }
 
-        public float GetNear() { return near; }
-        public void SetNear(float near) {
-            this.near = near;
-            NotifyListeners();
+        protected float near = 0.1f;
+        public float Near {
+            get { return near; }
+            set {
+                near = value;
+                NotifyListeners();
+            }
         }
 
-        public float GetFar() { return far; }
-        public void SetFar(float far) {
-            this.far = far;
-            NotifyListeners();
-        }
-
-        protected void NotifyListeners() {
-            if (cameraUpdated != null) {
-                cameraUpdated.Invoke(this);
+        protected float far = 1000;
+        public float Far {
+            get { return far; }
+            set {
+                far = value;
+                NotifyListeners();
             }
         }
 

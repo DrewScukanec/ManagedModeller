@@ -25,12 +25,12 @@ namespace ManagedModeller
             openGLPanel3.SetScene(scene);
             openGLPanel4.SetScene(scene);
 
-            transformationPanel1.SetTransformation(scene.GetPrimitive(0).GetTransformation());
+            transformationPanel1.SetTransformation(scene.GetPrimitive(0).Transformation);
             transformationPanel1.transformationUpdated += TransformationUpdated;
         }
 
         private void TransformationUpdated(Transformation transformation) {
-            scene.GetPrimitive(0).SetTransformation(transformation);
+            scene.GetPrimitive(0).Transformation = transformation;
         }
     }
 }

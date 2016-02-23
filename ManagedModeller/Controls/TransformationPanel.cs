@@ -17,17 +17,17 @@ namespace ManagedModeller.Controls {
 
         public void SetTransformation(Transformation transformation) {
             this.transformation = new Transformation(transformation);
-            translatePanel.Value = transformation.GetTranslation();
-            scalePanel.Value = transformation.GetScale();
+            translatePanel.Value = transformation.Translation;
+            scalePanel.Value = transformation.Scale;
         }
 
         private void TranslationUpdated(Vector3d newValue) {
-            transformation.SetTranslation(newValue);
+            transformation.Translation = newValue;
             NotifyListeners();
         }
 
         private void ScaleUpdated(Vector3d newValue) {
-            transformation.SetScale(newValue);
+            transformation.Scale = newValue;
             NotifyListeners();
         }
 
