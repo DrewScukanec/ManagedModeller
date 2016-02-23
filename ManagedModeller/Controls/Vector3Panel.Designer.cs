@@ -23,89 +23,77 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.xPanel = new ManagedModeller.Controls.DoublePanel();
+            this.zPanel = new ManagedModeller.Controls.DoublePanel();
+            this.yPanel = new ManagedModeller.Controls.DoublePanel();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // tableLayoutPanel1
             // 
-            this.textBox1.Location = new System.Drawing.Point(23, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(135, 20);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Leave += new System.EventHandler(this.textBox_Leave);
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.xPanel, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.zPanel, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.yPanel, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(69, 78);
+            this.tableLayoutPanel1.TabIndex = 9;
             // 
-            // textBox2
+            // xPanel
             // 
-            this.textBox2.Location = new System.Drawing.Point(23, 29);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(135, 20);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.Leave += new System.EventHandler(this.textBox_Leave);
+            this.xPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xPanel.Label = "X";
+            this.xPanel.Location = new System.Drawing.Point(3, 3);
+            this.xPanel.Name = "xPanel";
+            this.xPanel.Size = new System.Drawing.Size(63, 19);
+            this.xPanel.TabIndex = 6;
+            this.xPanel.Value = 0D;
             // 
-            // textBox3
+            // zPanel
             // 
-            this.textBox3.Location = new System.Drawing.Point(23, 55);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(135, 20);
-            this.textBox3.TabIndex = 2;
-            this.textBox3.Leave += new System.EventHandler(this.textBox_Leave);
+            this.zPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.zPanel.Label = "Z";
+            this.zPanel.Location = new System.Drawing.Point(3, 53);
+            this.zPanel.Name = "zPanel";
+            this.zPanel.Size = new System.Drawing.Size(63, 22);
+            this.zPanel.TabIndex = 8;
+            this.zPanel.Value = 0D;
             // 
-            // label1
+            // yPanel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(14, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "X";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 33);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(14, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Y";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 58);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(14, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Z";
+            this.yPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yPanel.Label = "Y";
+            this.yPanel.Location = new System.Drawing.Point(3, 28);
+            this.yPanel.Name = "yPanel";
+            this.yPanel.Size = new System.Drawing.Size(63, 19);
+            this.yPanel.TabIndex = 7;
+            this.yPanel.Value = 0D;
             // 
             // Vector3Panel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Vector3Panel";
-            this.Size = new System.Drawing.Size(460, 188);
+            this.Size = new System.Drawing.Size(69, 78);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private DoublePanel xPanel;
+        private DoublePanel yPanel;
+        private DoublePanel zPanel;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

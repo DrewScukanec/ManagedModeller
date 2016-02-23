@@ -32,10 +32,13 @@
             // textBox
             // 
             this.textBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox.Location = new System.Drawing.Point(38, 3);
+            this.textBox.Location = new System.Drawing.Point(38, 0);
+            this.textBox.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(18, 20);
+            this.textBox.Size = new System.Drawing.Size(21, 20);
             this.textBox.TabIndex = 0;
+            this.textBox.Text = "0.0";
+            this.textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             this.textBox.Leave += new System.EventHandler(this.textBox_Leave);
             // 
@@ -43,7 +46,7 @@
             // 
             this.label.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(3, 6);
+            this.label.Location = new System.Drawing.Point(3, 3);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(29, 13);
             this.label.TabIndex = 1;
@@ -61,7 +64,7 @@
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 1;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(59, 26);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(59, 20);
             this.tableLayoutPanel.TabIndex = 2;
             // 
             // DoublePanel
@@ -70,7 +73,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel);
             this.Name = "DoublePanel";
-            this.Size = new System.Drawing.Size(59, 26);
+            this.Size = new System.Drawing.Size(59, 20);
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
