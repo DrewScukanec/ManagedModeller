@@ -29,7 +29,12 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.openGLPanel1 = new ManagedModeller.OpenGLPanel();
+            this.openGLPanel2 = new ManagedModeller.OpenGLPanel();
+            this.openGLPanel3 = new ManagedModeller.OpenGLPanel();
+            this.openGLPanel4 = new ManagedModeller.OpenGLPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.transformationPanel1 = new ManagedModeller.Controls.TransformationPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,11 +52,6 @@
             this.boxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.triangleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cylinderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openGLPanel1 = new ManagedModeller.OpenGLPanel();
-            this.openGLPanel2 = new ManagedModeller.OpenGLPanel();
-            this.openGLPanel3 = new ManagedModeller.OpenGLPanel();
-            this.openGLPanel4 = new ManagedModeller.OpenGLPanel();
-            this.transformationPanel1 = new ManagedModeller.Controls.TransformationPanel();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -81,6 +81,50 @@
             this.tableLayoutPanel.Size = new System.Drawing.Size(796, 642);
             this.tableLayoutPanel.TabIndex = 3;
             // 
+            // openGLPanel1
+            // 
+            this.openGLPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.openGLPanel1.Camera = ManagedModeller.OpenGLPanel.CameraType.ZOrtho;
+            this.openGLPanel1.Location = new System.Drawing.Point(6, 6);
+            this.openGLPanel1.Name = "openGLPanel1";
+            this.openGLPanel1.Size = new System.Drawing.Size(387, 310);
+            this.openGLPanel1.TabIndex = 1;
+            // 
+            // openGLPanel2
+            // 
+            this.openGLPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.openGLPanel2.Camera = ManagedModeller.OpenGLPanel.CameraType.XOrtho;
+            this.openGLPanel2.Location = new System.Drawing.Point(402, 6);
+            this.openGLPanel2.Name = "openGLPanel2";
+            this.openGLPanel2.Size = new System.Drawing.Size(388, 310);
+            this.openGLPanel2.TabIndex = 2;
+            // 
+            // openGLPanel3
+            // 
+            this.openGLPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.openGLPanel3.Camera = ManagedModeller.OpenGLPanel.CameraType.YOrtho;
+            this.openGLPanel3.Location = new System.Drawing.Point(6, 325);
+            this.openGLPanel3.Name = "openGLPanel3";
+            this.openGLPanel3.Size = new System.Drawing.Size(387, 311);
+            this.openGLPanel3.TabIndex = 3;
+            // 
+            // openGLPanel4
+            // 
+            this.openGLPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.openGLPanel4.Camera = ManagedModeller.OpenGLPanel.CameraType.Perspective;
+            this.openGLPanel4.Location = new System.Drawing.Point(402, 325);
+            this.openGLPanel4.Name = "openGLPanel4";
+            this.openGLPanel4.Size = new System.Drawing.Size(388, 311);
+            this.openGLPanel4.TabIndex = 4;
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -99,6 +143,15 @@
             this.splitContainer1.Size = new System.Drawing.Size(1039, 648);
             this.splitContainer1.SplitterDistance = 802;
             this.splitContainer1.TabIndex = 4;
+            // 
+            // transformationPanel1
+            // 
+            this.transformationPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.transformationPanel1.Location = new System.Drawing.Point(0, 0);
+            this.transformationPanel1.MinimumSize = new System.Drawing.Size(87, 194);
+            this.transformationPanel1.Name = "transformationPanel1";
+            this.transformationPanel1.Size = new System.Drawing.Size(233, 194);
+            this.transformationPanel1.TabIndex = 0;
             // 
             // menuStrip1
             // 
@@ -223,57 +276,6 @@
             this.cylinderToolStripMenuItem.Name = "cylinderToolStripMenuItem";
             this.cylinderToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.cylinderToolStripMenuItem.Text = "Cylinder";
-            // 
-            // openGLPanel1
-            // 
-            this.openGLPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.openGLPanel1.Camera = ManagedModeller.OpenGLPanel.CameraType.ZOrtho;
-            this.openGLPanel1.Location = new System.Drawing.Point(6, 6);
-            this.openGLPanel1.Name = "openGLPanel1";
-            this.openGLPanel1.Size = new System.Drawing.Size(387, 310);
-            this.openGLPanel1.TabIndex = 1;
-            // 
-            // openGLPanel2
-            // 
-            this.openGLPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.openGLPanel2.Camera = ManagedModeller.OpenGLPanel.CameraType.XOrtho;
-            this.openGLPanel2.Location = new System.Drawing.Point(402, 6);
-            this.openGLPanel2.Name = "openGLPanel2";
-            this.openGLPanel2.Size = new System.Drawing.Size(388, 310);
-            this.openGLPanel2.TabIndex = 2;
-            // 
-            // openGLPanel3
-            // 
-            this.openGLPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.openGLPanel3.Camera = ManagedModeller.OpenGLPanel.CameraType.YOrtho;
-            this.openGLPanel3.Location = new System.Drawing.Point(6, 325);
-            this.openGLPanel3.Name = "openGLPanel3";
-            this.openGLPanel3.Size = new System.Drawing.Size(387, 311);
-            this.openGLPanel3.TabIndex = 3;
-            // 
-            // openGLPanel4
-            // 
-            this.openGLPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.openGLPanel4.Camera = ManagedModeller.OpenGLPanel.CameraType.Perspective;
-            this.openGLPanel4.Location = new System.Drawing.Point(402, 325);
-            this.openGLPanel4.Name = "openGLPanel4";
-            this.openGLPanel4.Size = new System.Drawing.Size(388, 311);
-            this.openGLPanel4.TabIndex = 4;
-            // 
-            // transformationPanel1
-            // 
-            this.transformationPanel1.Location = new System.Drawing.Point(3, 3);
-            this.transformationPanel1.Name = "transformationPanel1";
-            this.transformationPanel1.Size = new System.Drawing.Size(167, 194);
-            this.transformationPanel1.TabIndex = 0;
             // 
             // Form1
             // 

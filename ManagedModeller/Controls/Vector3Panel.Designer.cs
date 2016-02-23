@@ -44,7 +44,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(69, 78);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(80, 78);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
             // xPanel
@@ -52,8 +52,10 @@
             this.xPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xPanel.Label = "X";
             this.xPanel.Location = new System.Drawing.Point(3, 3);
+            this.xPanel.MaximumSize = new System.Drawing.Size(0, 20);
+            this.xPanel.MinimumSize = new System.Drawing.Size(75, 20);
             this.xPanel.Name = "xPanel";
-            this.xPanel.Size = new System.Drawing.Size(63, 19);
+            this.xPanel.Size = new System.Drawing.Size(75, 20);
             this.xPanel.TabIndex = 6;
             this.xPanel.Value = 0D;
             // 
@@ -62,8 +64,10 @@
             this.zPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.zPanel.Label = "Z";
             this.zPanel.Location = new System.Drawing.Point(3, 53);
+            this.zPanel.MaximumSize = new System.Drawing.Size(0, 20);
+            this.zPanel.MinimumSize = new System.Drawing.Size(75, 20);
             this.zPanel.Name = "zPanel";
-            this.zPanel.Size = new System.Drawing.Size(63, 22);
+            this.zPanel.Size = new System.Drawing.Size(75, 20);
             this.zPanel.TabIndex = 8;
             this.zPanel.Value = 0D;
             // 
@@ -72,8 +76,10 @@
             this.yPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.yPanel.Label = "Y";
             this.yPanel.Location = new System.Drawing.Point(3, 28);
+            this.yPanel.MaximumSize = new System.Drawing.Size(0, 20);
+            this.yPanel.MinimumSize = new System.Drawing.Size(75, 20);
             this.yPanel.Name = "yPanel";
-            this.yPanel.Size = new System.Drawing.Size(63, 19);
+            this.yPanel.Size = new System.Drawing.Size(75, 20);
             this.yPanel.TabIndex = 7;
             this.yPanel.Value = 0D;
             // 
@@ -82,8 +88,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MaximumSize = new System.Drawing.Size(0, 78);
+            this.MinimumSize = new System.Drawing.Size(80, 78);
             this.Name = "Vector3Panel";
-            this.Size = new System.Drawing.Size(69, 78);
+            this.Size = new System.Drawing.Size(80, 78);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

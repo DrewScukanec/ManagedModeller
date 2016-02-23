@@ -32,10 +32,10 @@
             // textBox
             // 
             this.textBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox.Location = new System.Drawing.Point(51, 0);
+            this.textBox.Location = new System.Drawing.Point(23, 0);
             this.textBox.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(34, 20);
+            this.textBox.Size = new System.Drawing.Size(27, 20);
             this.textBox.TabIndex = 0;
             this.textBox.Text = "0.0";
             this.textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -49,9 +49,9 @@
             this.label.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label.Location = new System.Drawing.Point(3, 3);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(42, 14);
+            this.label.Size = new System.Drawing.Size(14, 14);
             this.label.TabIndex = 1;
-            this.label.Text = "label";
+            this.label.Text = "L";
             // 
             // tableLayoutPanel
             // 
@@ -65,7 +65,7 @@
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 1;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(85, 20);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(50, 20);
             this.tableLayoutPanel.TabIndex = 2;
             // 
             // DoublePanel
@@ -73,8 +73,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel);
+            this.MaximumSize = new System.Drawing.Size(0, 20);
+            this.MinimumSize = new System.Drawing.Size(50, 20);
             this.Name = "DoublePanel";
-            this.Size = new System.Drawing.Size(85, 20);
+            this.Size = new System.Drawing.Size(50, 20);
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
