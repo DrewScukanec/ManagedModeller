@@ -23,8 +23,6 @@ namespace ManagedModeller {
         private Scene scene;
         private Camera camera;
         private CameraType cameraType;
-        private Scene.SceneCallback sceneCallback;
-        private Camera.CameraUpdated cameraCallback;
 
         public OpenGLPanel() {
             InitializeComponent();
@@ -40,16 +38,15 @@ namespace ManagedModeller {
         }
 
         public void SetScene(Scene scene) {
-            if (this.scene != null && this.sceneCallback != null) {
-                this.scene.RemoveSceneUpdated(this.sceneCallback);
+            if (this.scene != null) {
+                this.scene.sceneUpdated -= SceneUpdated;
             }
-            if (this.camera != null && this.cameraCallback != null) {
-                this.camera.RemoveCameraUpdated(this.cameraCallback);
+            if (this.camera != null) {
+                this.camera.cameraUpdated -= CameraUpdated;
             }
 
             this.scene = scene;
-            this.sceneCallback = new Scene.SceneCallback(SceneUpdated);
-            this.scene.AddSceneUpdated(this.sceneCallback);
+            this.scene.sceneUpdated += SceneUpdated;
 
             switch (cameraType) {
                 case CameraType.XOrtho: camera = scene.GetXOrthographicCamera(); break;
@@ -57,8 +54,7 @@ namespace ManagedModeller {
                 case CameraType.ZOrtho: camera = scene.GetZOrthographicCamera(); break;
                 case CameraType.Perspective: camera = scene.GetPerspectiveCamera(); break;
             }
-            this.cameraCallback = new Camera.CameraUpdated(CameraUpdated);
-            camera.AddCameraUpdated(this.cameraCallback);
+            camera.cameraUpdated += CameraUpdated;
 
             camera.SetWidth(glControl.Width);
             camera.SetHeight(glControl.Height);

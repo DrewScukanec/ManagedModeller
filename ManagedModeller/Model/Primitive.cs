@@ -10,18 +10,10 @@ namespace ManagedModeller {
 
         public delegate void PrimitiveUpdated(Primitive primitive);
 
-        private event PrimitiveUpdated primitiveUpdated;
+        public event PrimitiveUpdated primitiveUpdated;
 
         protected Primitive() {
             id = Interlocked.Increment(ref nextId);
-        }
-
-        public void AddPrimitiveUpdated(PrimitiveUpdated callback) {
-            primitiveUpdated += callback;
-        }
-
-        public void RemovePrimitiveUpdated(PrimitiveUpdated callback) {
-            primitiveUpdated -= callback;
         }
 
         protected void NotifyListeners() {

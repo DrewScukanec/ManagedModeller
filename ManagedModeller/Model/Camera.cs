@@ -13,7 +13,8 @@ namespace ManagedModeller {
         private static Vector3 Y_AXIS = new Vector3(0, 1, 0);
         private static Vector3 Z_AXIS = new Vector3(0, 0, 1);
 
-        private event CameraUpdated cameraUpdated;
+        public event CameraUpdated cameraUpdated;
+
         protected int width;
         protected int height;
         protected PolygonMode polygonMode = PolygonMode.Fill;
@@ -26,14 +27,6 @@ namespace ManagedModeller {
         protected float zoom = 1;
         protected float near = 0.1f;
         protected float far = 1000;
-
-        public void AddCameraUpdated(CameraUpdated callback) {
-            cameraUpdated += callback;
-        }
-
-        public void RemoveCameraUpdated(CameraUpdated callback) {
-            cameraUpdated -= callback;
-        }
 
         public int GetWidth() { return width; }
         public void SetWidth(int width) {
