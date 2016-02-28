@@ -1,4 +1,5 @@
-﻿using OpenTK;
+﻿using ManagedModeller.Model;
+using OpenTK;
 using System.Windows.Forms;
 
 namespace ManagedModeller.Controls {

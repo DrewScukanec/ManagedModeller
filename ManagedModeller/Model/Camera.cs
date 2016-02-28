@@ -1,9 +1,8 @@
 ﻿using OpenTK;
 using OpenTK.Graphics.OpenGL;
-using System.Drawing;
 
-namespace ManagedModeller {
-    public abstract class Camera {
+namespace ManagedModeller.Model {
+    public abstract class Camera : SceneElement {
 
         #region Static
         private const float ANGLE_SCALE = 2;
@@ -20,6 +19,7 @@ namespace ManagedModeller {
         }
         #endregion
 
+        #region TwoD Properties
         protected int width;
         public int Width {
             get { return width; }
@@ -37,7 +37,9 @@ namespace ManagedModeller {
                 NotifyListeners();
             }
         }
+        #endregion
 
+        #region Rendering Properties
         protected PolygonMode polygonMode = PolygonMode.Fill;
         public PolygonMode PolygonMode {
             get { return polygonMode; }
@@ -47,6 +49,26 @@ namespace ManagedModeller {
             }
         }
 
+        protected float near = 0.1f;
+        public float Near {
+            get { return near; }
+            set {
+                near = value;
+                NotifyListeners();
+            }
+        }
+
+        protected float far = 1000;
+        public float Far {
+            get { return far; }
+            set {
+                far = value;
+                NotifyListeners();
+            }
+        }
+        #endregion
+
+        #region ThreeD Properties
         protected Vector3 location = new Vector3();
         public Vector3 GetLocation() { return new Vector3(location); }
         public void SetLocation(Vector3 location) {
@@ -77,6 +99,7 @@ namespace ManagedModeller {
             this.right = Vector3.Cross(eyeDirection, up);
             NotifyListeners();
         }
+        #endregion
 
         protected float rotation = 0;
         public float GetRotation() { return rotation; }
@@ -94,26 +117,9 @@ namespace ManagedModeller {
             }
         }
 
-        protected float near = 0.1f;
-        public float Near {
-            get { return near; }
-            set {
-                near = value;
-                NotifyListeners();
-            }
-        }
-
-        protected float far = 1000;
-        public float Far {
-            get { return far; }
-            set {
-                far = value;
-                NotifyListeners();
-            }
-        }
-
         public abstract void Shift(Vector2 offset, bool isShiftPressed);
 
+        #region Rendering
         public abstract void SetProjectionMatrix();
 
         public void SetModelViewMatrix() {
@@ -126,6 +132,6 @@ namespace ManagedModeller {
             GL.Scale(zoom, zoom, zoom);
             GL.Rotate(rotation / ANGLE_SCALE, eyeDirection);
         }
-
+        #endregion
     }
 }

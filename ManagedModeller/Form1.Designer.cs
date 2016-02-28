@@ -34,7 +34,10 @@
             this.openGLPanel3 = new ManagedModeller.OpenGLPanel();
             this.openGLPanel4 = new ManagedModeller.OpenGLPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.transformationPanel1 = new ManagedModeller.Controls.TransformationPanel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.scenePage = new System.Windows.Forms.TabPage();
+            this.sceneTree = new System.Windows.Forms.TreeView();
+            this.propertyPage = new System.Windows.Forms.TabPage();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,6 +60,8 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.scenePage.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -139,19 +144,51 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.transformationPanel1);
+            this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
             this.splitContainer1.Size = new System.Drawing.Size(1039, 648);
             this.splitContainer1.SplitterDistance = 802;
             this.splitContainer1.TabIndex = 4;
             // 
-            // transformationPanel1
+            // tabControl1
             // 
-            this.transformationPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.transformationPanel1.Location = new System.Drawing.Point(0, 0);
-            this.transformationPanel1.MinimumSize = new System.Drawing.Size(87, 194);
-            this.transformationPanel1.Name = "transformationPanel1";
-            this.transformationPanel1.Size = new System.Drawing.Size(233, 194);
-            this.transformationPanel1.TabIndex = 0;
+            this.tabControl1.Controls.Add(this.scenePage);
+            this.tabControl1.Controls.Add(this.propertyPage);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(233, 648);
+            this.tabControl1.TabIndex = 0;
+            // 
+            // scenePage
+            // 
+            this.scenePage.Controls.Add(this.sceneTree);
+            this.scenePage.Location = new System.Drawing.Point(4, 22);
+            this.scenePage.Name = "scenePage";
+            this.scenePage.Padding = new System.Windows.Forms.Padding(3);
+            this.scenePage.Size = new System.Drawing.Size(225, 622);
+            this.scenePage.TabIndex = 0;
+            this.scenePage.Text = "Scene Tree";
+            this.scenePage.UseVisualStyleBackColor = true;
+            // 
+            // sceneTree
+            // 
+            this.sceneTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sceneTree.Location = new System.Drawing.Point(3, 3);
+            this.sceneTree.Name = "sceneTree";
+            this.sceneTree.Size = new System.Drawing.Size(219, 616);
+            this.sceneTree.TabIndex = 0;
+            this.sceneTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.onSceneTreeSelection);
+            // 
+            // propertyPage
+            // 
+            this.propertyPage.Location = new System.Drawing.Point(4, 22);
+            this.propertyPage.Name = "propertyPage";
+            this.propertyPage.Padding = new System.Windows.Forms.Padding(3);
+            this.propertyPage.Size = new System.Drawing.Size(225, 622);
+            this.propertyPage.TabIndex = 1;
+            this.propertyPage.Text = "Properties";
+            this.propertyPage.UseVisualStyleBackColor = true;
             // 
             // menuStrip1
             // 
@@ -293,6 +330,8 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.scenePage.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -324,7 +363,10 @@
         private System.Windows.Forms.ToolStripMenuItem triangleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cylinderToolStripMenuItem;
         private OpenGLPanel openGLPanel4;
-        private Controls.TransformationPanel transformationPanel1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage scenePage;
+        private System.Windows.Forms.TabPage propertyPage;
+        private System.Windows.Forms.TreeView sceneTree;
     }
 }
 

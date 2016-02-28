@@ -1,7 +1,5 @@
-﻿using OpenTK;
-using OpenTK.Graphics.OpenGL;
+﻿using ManagedModeller.Model;
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace ManagedModeller
@@ -25,12 +23,29 @@ namespace ManagedModeller
             openGLPanel3.SetScene(scene);
             openGLPanel4.SetScene(scene);
 
-            transformationPanel1.SetTransformation(scene.GetPrimitive(0).Transformation);
-            transformationPanel1.transformationUpdated += TransformationUpdated;
+            PopulateSceneTree();
         }
 
-        private void TransformationUpdated(Transformation transformation) {
-            scene.GetPrimitive(0).Transformation = transformation;
+        private void PopulateSceneTree() {
+            sceneTree.Nodes.Add(new SceneElementNode(scene.XOrthographicCamera));
+            sceneTree.Nodes.Add(new SceneElementNode(scene.YOrthographicCamera));
+            sceneTree.Nodes.Add(new SceneElementNode(scene.ZOrthographicCamera));
+            sceneTree.Nodes.Add(new SceneElementNode(scene.PerspectiveCamera));
+
+            for (int ctr = 0; ctr < scene.GetPrimitiveCount(); ctr++) {
+                sceneTree.Nodes.Add(new SceneElementNode(scene.GetPrimitive(ctr)));
+            }
+        }
+
+        private void onSceneTreeSelection(object sender, TreeViewEventArgs e) {
+        }
+    }
+
+    class SceneElementNode : TreeNode {
+        private SceneElement sceneElement;
+
+        public SceneElementNode(SceneElement sceneElement) : base(sceneElement.Name) {
+            this.sceneElement = sceneElement;
         }
     }
 }

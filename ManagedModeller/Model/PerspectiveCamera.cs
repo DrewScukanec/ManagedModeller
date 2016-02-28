@@ -1,13 +1,14 @@
 ﻿using OpenTK;
 using OpenTK.Graphics.OpenGL;
 
-namespace ManagedModeller {
+namespace ManagedModeller.Model {
     public class PerspectiveCamera : Camera {
 
         public PerspectiveCamera() {
             SetLocation(new Vector3(100, 100, 100));
             SetLookAt(new Vector3(0, 0, 0));
             SetUp(new Vector3(0, 1, 0));
+            Name = "Perspective Camera";
         }
 
         #region FOV

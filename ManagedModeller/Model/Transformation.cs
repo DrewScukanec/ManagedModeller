@@ -1,7 +1,7 @@
 ﻿using OpenTK;
 using OpenTK.Graphics.OpenGL;
 
-namespace ManagedModeller {
+namespace ManagedModeller.Model {
     public class Transformation {
 
         #region Static

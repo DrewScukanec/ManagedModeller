@@ -3,45 +3,30 @@ using OpenTK.Graphics.OpenGL;
 using System.Drawing;
 using System.Threading;
 
-namespace ManagedModeller {
-    public abstract class Primitive {
+namespace ManagedModeller.Model {
+    public abstract class Primitive : SceneElement {
 
         private static long nextId = 1;
 
         #region Event handling
-        public delegate void PrimitiveUpdated(Primitive primitive);
-        public event PrimitiveUpdated primitiveUpdated;
+        public delegate void TransformationUpdated(Primitive primitive);
+        public event TransformationUpdated transformationUpdated;
 
-        protected void NotifyListeners() {
-            if (primitiveUpdated != null) {
-                primitiveUpdated.Invoke(this);
+        private void NotifyTransformationUpdated(Transformation transformation) {
+            if (transformationUpdated != null) {
+                transformationUpdated.Invoke(this);
             }
-        }
-
-        private void TransformationUpdated(Transformation transformation) {
-            NotifyListeners();
         }
         #endregion
 
         protected Primitive() {
             id = Interlocked.Increment(ref nextId);
-            transformation.transformationUpdated += TransformationUpdated;
+            transformation.transformationUpdated += NotifyTransformationUpdated;
         }
 
         #region ID
         private long id;
         public long Id { get { return id; } }
-        #endregion
-
-        #region Name
-        private string name;
-        public string Name {
-            get { return name; }
-            set {
-                name = value;
-                NotifyListeners();
-            }
-        }
         #endregion
 
         #region Transformation

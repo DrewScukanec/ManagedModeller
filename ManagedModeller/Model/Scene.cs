@@ -2,21 +2,35 @@
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace ManagedModeller {
+namespace ManagedModeller.Model {
     public class Scene {
 
         #region Event handling
-        public delegate void SceneCallback(Scene scene);
-        public event SceneCallback sceneUpdated;
+        public delegate void PrimitiveTransformationUpdated(Scene scene, Primitive primitive);
+        public event PrimitiveTransformationUpdated primitiveTransformationUpdated;
 
-        private void NotifyListeners() {
-            if (sceneUpdated != null) {
-                sceneUpdated.Invoke(this);
+        private void NotifyPrimitiveTransformationUpdated(Primitive primitive) {
+            if (primitiveTransformationUpdated != null) {
+                primitiveTransformationUpdated.Invoke(this, primitive);
             }
         }
 
-        private void PrimitiveUpdated(Primitive primitive) {
-            NotifyListeners();
+        public delegate void SceneElementNameUpdated(Scene scene, SceneElement sceneElement);
+        public event SceneElementNameUpdated sceneElementNameUpdated;
+
+        private void NotifySceneElementNameUpdated(SceneElement sceneElement) {
+            if (sceneElementNameUpdated != null) {
+                sceneElementNameUpdated.Invoke(this, sceneElement);
+            }
+        }
+
+        public delegate void PrimitiveAdded(Scene scene, Primitive primitive);
+        public event PrimitiveAdded primitiveAdded;
+
+        private void NotifyPrimitiveAdded(Primitive primitive) {
+            if (primitiveAdded != null) {
+                primitiveAdded.Invoke(this, primitive);
+            }
         }
         #endregion
 
@@ -30,6 +44,7 @@ namespace ManagedModeller {
             Sphere s = new Sphere();
             s.Transformation = Transformation.ScaleBy(50, 50, 50);
             s.SetColor(0, 1.0f, 1.0f);
+            s.Name = "Blue Sphere";
             AddPrimitive(s);
         }
 
@@ -78,8 +93,9 @@ namespace ManagedModeller {
         private List<Primitive> primitives = new List<Primitive>();
         public void AddPrimitive(Primitive primitive) {
             primitives.Add(primitive);
-            primitive.primitiveUpdated += PrimitiveUpdated;
-            NotifyListeners();
+            primitive.transformationUpdated += NotifyPrimitiveTransformationUpdated;
+            primitive.nameUpdated += NotifySceneElementNameUpdated;
+            NotifyPrimitiveAdded(primitive);
         }
 
         public int GetPrimitiveCount() {

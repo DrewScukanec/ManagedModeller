@@ -1,4 +1,5 @@
-﻿using OpenTK;
+﻿using ManagedModeller.Model;
+using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System;
 using System.ComponentModel;
@@ -29,7 +30,7 @@ namespace ManagedModeller {
             glControl.MouseWheel += glControlOnMouseWheel;
         }
 
-        private void SceneUpdated(Scene scene) {
+        private void SceneUpdated(Scene scene, Primitive primitive) {
             glControl.Invalidate();
         }
 
@@ -39,21 +40,23 @@ namespace ManagedModeller {
 
         public void SetScene(Scene scene) {
             if (this.scene != null) {
-                this.scene.sceneUpdated -= SceneUpdated;
+                this.scene.primitiveAdded -= SceneUpdated;
+                this.scene.primitiveTransformationUpdated -= SceneUpdated;
             }
-            if (this.camera != null) {
-                this.camera.cameraUpdated -= CameraUpdated;
+            if (camera != null) {
+                camera.cameraUpdated -= CameraUpdated;
             }
 
             this.scene = scene;
-            this.scene.sceneUpdated += SceneUpdated;
-
             switch (cameraType) {
                 case CameraType.XOrtho: camera = scene.XOrthographicCamera; break;
                 case CameraType.YOrtho: camera = scene.YOrthographicCamera; break;
                 case CameraType.ZOrtho: camera = scene.ZOrthographicCamera; break;
                 case CameraType.Perspective: camera = scene.PerspectiveCamera; break;
             }
+
+            this.scene.primitiveAdded += SceneUpdated;
+            this.scene.primitiveTransformationUpdated += SceneUpdated;
             camera.cameraUpdated += CameraUpdated;
 
             camera.Width = glControl.Width;

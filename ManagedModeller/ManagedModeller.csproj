@@ -64,6 +64,18 @@
     <Compile Include="Controls\FloatPanel.Designer.cs">
       <DependentUpon>FloatPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\OrthographicCameraPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\OrthographicCameraPanel.Designer.cs">
+      <DependentUpon>OrthographicCameraPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\StringPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\StringPanel.Designer.cs">
+      <DependentUpon>StringPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TransformationPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -95,6 +107,7 @@
     <Compile Include="Controls\OpenGLPanel.Designer.cs">
       <DependentUpon>OpenGLPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\SceneElement.cs" />
     <Compile Include="Model\OrthographicCamera.cs" />
     <Compile Include="Model\PerspectiveCamera.cs" />
     <Compile Include="Model\Primitive.cs" />
@@ -109,6 +122,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\FloatPanel.resx">
       <DependentUpon>FloatPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\OrthographicCameraPanel.resx">
+      <DependentUpon>OrthographicCameraPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\StringPanel.resx">
+      <DependentUpon>StringPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\TransformationPanel.resx">
       <DependentUpon>TransformationPanel.cs</DependentUpon>

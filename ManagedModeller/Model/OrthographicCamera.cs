@@ -1,7 +1,7 @@
 ﻿using OpenTK;
 using OpenTK.Graphics.OpenGL;
 
-namespace ManagedModeller {
+namespace ManagedModeller.Model {
     public class OrthographicCamera : Camera {
 
         #region Static
@@ -10,6 +10,7 @@ namespace ManagedModeller {
             camera.SetLocation(new Vector3(100, 0, 0));
             camera.SetLookAt(new Vector3(0, 0, 0));
             camera.SetUp(new Vector3(0, 1, 0));
+            camera.Name = "X Orthographic";
             return camera;
         }
 
@@ -18,6 +19,7 @@ namespace ManagedModeller {
             camera.SetLocation(new Vector3(0, 100, 0));
             camera.SetLookAt(new Vector3(0, 0, 0));
             camera.SetUp(new Vector3(0, 0, -1));
+            camera.Name = "Y Orthographic";
             return camera;
         }
 
@@ -26,6 +28,7 @@ namespace ManagedModeller {
             camera.SetLocation(new Vector3(0, 0, 100));
             camera.SetLookAt(new Vector3(0, 0, 0));
             camera.SetUp(new Vector3(0, 1, 0));
+            camera.Name = "Z Orthographic";
             return camera;
         }
         #endregion
