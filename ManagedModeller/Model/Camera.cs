@@ -12,7 +12,7 @@ namespace ManagedModeller.Model {
         public delegate void CameraUpdated(Camera camera);
         public event CameraUpdated cameraUpdated;
 
-        protected void NotifyListeners() {
+        protected void NotifyCameraUpdated() {
             if (cameraUpdated != null) {
                 cameraUpdated.Invoke(this);
             }
@@ -25,7 +25,7 @@ namespace ManagedModeller.Model {
             get { return width; }
             set {
                 width = value;
-                NotifyListeners();
+                NotifyCameraUpdated();
             }
         }
 
@@ -34,7 +34,7 @@ namespace ManagedModeller.Model {
             get { return height; }
             set {
                 height = value;
-                NotifyListeners();
+                NotifyCameraUpdated();
             }
         }
         #endregion
@@ -45,7 +45,7 @@ namespace ManagedModeller.Model {
             get { return polygonMode; }
             set {
                 polygonMode = value;
-                NotifyListeners();
+                NotifyCameraUpdated();
             }
         }
 
@@ -54,7 +54,7 @@ namespace ManagedModeller.Model {
             get { return near; }
             set {
                 near = value;
-                NotifyListeners();
+                NotifyCameraUpdated();
             }
         }
 
@@ -63,7 +63,7 @@ namespace ManagedModeller.Model {
             get { return far; }
             set {
                 far = value;
-                NotifyListeners();
+                NotifyCameraUpdated();
             }
         }
         #endregion
@@ -96,8 +96,8 @@ namespace ManagedModeller.Model {
         protected void UpdateBasis() {
             eyeDirection = lookAt - location;
             eyeDirection.Normalize();
-            this.right = Vector3.Cross(eyeDirection, up);
-            NotifyListeners();
+            right = Vector3.Cross(eyeDirection, up);
+            NotifyCameraUpdated();
         }
         #endregion
 
@@ -105,7 +105,7 @@ namespace ManagedModeller.Model {
         public float GetRotation() { return rotation; }
         public void SetRotation(float rotation) {
             this.rotation = rotation;
-            NotifyListeners();
+            NotifyCameraUpdated();
         }
 
         protected float zoom = 1;
@@ -113,7 +113,7 @@ namespace ManagedModeller.Model {
             get { return zoom; }
             set {
                 zoom = value;
-                NotifyListeners();
+                NotifyCameraUpdated();
             }
         }
 

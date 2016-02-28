@@ -6,12 +6,20 @@ namespace ManagedModeller.Model {
     public class Scene {
 
         #region Event handling
-        public delegate void PrimitiveTransformationUpdated(Scene scene, Primitive primitive);
-        public event PrimitiveTransformationUpdated primitiveTransformationUpdated;
+        private void OnPrimitiveUpdated(Primitive primitive) {
+            NotifyScenePrimitiveUpdated(primitive);
+        }
 
-        private void NotifyPrimitiveTransformationUpdated(Primitive primitive) {
-            if (primitiveTransformationUpdated != null) {
-                primitiveTransformationUpdated.Invoke(this, primitive);
+        private void OnNameUpdated(SceneElement sceneElement) {
+            NotifySceneElementNameUpdated(sceneElement);
+        }
+
+        public delegate void ScenePrimitiveUpdated(Scene scene, Primitive primitive);
+        public event ScenePrimitiveUpdated scenePrimitiveUpdated;
+
+        private void NotifyScenePrimitiveUpdated(Primitive primitive) {
+            if (scenePrimitiveUpdated != null) {
+                scenePrimitiveUpdated.Invoke(this, primitive);
             }
         }
 
@@ -93,8 +101,8 @@ namespace ManagedModeller.Model {
         private List<Primitive> primitives = new List<Primitive>();
         public void AddPrimitive(Primitive primitive) {
             primitives.Add(primitive);
-            primitive.transformationUpdated += NotifyPrimitiveTransformationUpdated;
-            primitive.nameUpdated += NotifySceneElementNameUpdated;
+            primitive.primitiveUpdated += OnPrimitiveUpdated;
+            primitive.nameUpdated += OnNameUpdated;
             NotifyPrimitiveAdded(primitive);
         }
 

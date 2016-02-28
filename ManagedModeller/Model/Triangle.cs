@@ -15,7 +15,7 @@ namespace ManagedModeller.Model {
             p1.X = x;
             p1.Y = y;
             p1.Z = z;
-            NotifyListeners();
+            NotifyPrimitiveUpdated();
         }
         #endregion
 
@@ -30,7 +30,7 @@ namespace ManagedModeller.Model {
             p2.X = x;
             p2.Y = y;
             p2.Z = z;
-            NotifyListeners();
+            NotifyPrimitiveUpdated();
         }
         #endregion
 
@@ -45,7 +45,7 @@ namespace ManagedModeller.Model {
             p3.X = x;
             p3.Y = y;
             p3.Z = z;
-            NotifyListeners();
+            NotifyPrimitiveUpdated();
         }
         #endregion
 

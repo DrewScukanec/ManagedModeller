@@ -7,7 +7,7 @@
             get { return name; }
             set {
                 name = value;
-                NotifyListeners();
+                NotifyNameUpdated();
             }
         }
         #endregion
@@ -15,7 +15,7 @@
         public delegate void NameUpdated(SceneElement element);
         public event NameUpdated nameUpdated;
 
-        protected void NotifyListeners() {
+        protected void NotifyNameUpdated() {
             if (nameUpdated != null) {
                 nameUpdated.Invoke(this);
             }

@@ -23,85 +23,83 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.xPanel = new ManagedModeller.Controls.DoublePanel();
+            this.groupBox = new System.Windows.Forms.GroupBox();
             this.zPanel = new ManagedModeller.Controls.DoublePanel();
             this.yPanel = new ManagedModeller.Controls.DoublePanel();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.xPanel = new ManagedModeller.Controls.DoublePanel();
+            this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // groupBox
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.xPanel, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.zPanel, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.yPanel, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(80, 78);
-            this.tableLayoutPanel1.TabIndex = 9;
-            // 
-            // xPanel
-            // 
-            this.xPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xPanel.Label = "X";
-            this.xPanel.Location = new System.Drawing.Point(3, 3);
-            this.xPanel.MaximumSize = new System.Drawing.Size(0, 20);
-            this.xPanel.MinimumSize = new System.Drawing.Size(75, 20);
-            this.xPanel.Name = "xPanel";
-            this.xPanel.Size = new System.Drawing.Size(75, 20);
-            this.xPanel.TabIndex = 6;
-            this.xPanel.Value = 0D;
+            this.groupBox.Controls.Add(this.zPanel);
+            this.groupBox.Controls.Add(this.yPanel);
+            this.groupBox.Controls.Add(this.xPanel);
+            this.groupBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox.Location = new System.Drawing.Point(0, 0);
+            this.groupBox.MaximumSize = new System.Drawing.Size(0, 82);
+            this.groupBox.MinimumSize = new System.Drawing.Size(62, 82);
+            this.groupBox.Name = "groupBox";
+            this.groupBox.Size = new System.Drawing.Size(62, 82);
+            this.groupBox.TabIndex = 10;
+            this.groupBox.TabStop = false;
+            this.groupBox.Text = "Group";
             // 
             // zPanel
             // 
-            this.zPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.zPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.zPanel.Label = "Z";
-            this.zPanel.Location = new System.Drawing.Point(3, 53);
+            this.zPanel.Location = new System.Drawing.Point(3, 56);
             this.zPanel.MaximumSize = new System.Drawing.Size(0, 20);
-            this.zPanel.MinimumSize = new System.Drawing.Size(75, 20);
+            this.zPanel.MinimumSize = new System.Drawing.Size(55, 20);
             this.zPanel.Name = "zPanel";
-            this.zPanel.Size = new System.Drawing.Size(75, 20);
-            this.zPanel.TabIndex = 8;
+            this.zPanel.Size = new System.Drawing.Size(56, 20);
+            this.zPanel.TabIndex = 12;
             this.zPanel.Value = 0D;
             // 
             // yPanel
             // 
-            this.yPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.yPanel.Label = "Y";
-            this.yPanel.Location = new System.Drawing.Point(3, 28);
+            this.yPanel.Location = new System.Drawing.Point(3, 36);
             this.yPanel.MaximumSize = new System.Drawing.Size(0, 20);
-            this.yPanel.MinimumSize = new System.Drawing.Size(75, 20);
+            this.yPanel.MinimumSize = new System.Drawing.Size(55, 20);
             this.yPanel.Name = "yPanel";
-            this.yPanel.Size = new System.Drawing.Size(75, 20);
-            this.yPanel.TabIndex = 7;
+            this.yPanel.Size = new System.Drawing.Size(56, 20);
+            this.yPanel.TabIndex = 11;
             this.yPanel.Value = 0D;
+            // 
+            // xPanel
+            // 
+            this.xPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.xPanel.Label = "X";
+            this.xPanel.Location = new System.Drawing.Point(3, 16);
+            this.xPanel.MaximumSize = new System.Drawing.Size(0, 20);
+            this.xPanel.MinimumSize = new System.Drawing.Size(55, 20);
+            this.xPanel.Name = "xPanel";
+            this.xPanel.Size = new System.Drawing.Size(56, 20);
+            this.xPanel.TabIndex = 11;
+            this.xPanel.Value = 0D;
             // 
             // Vector3Panel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.MaximumSize = new System.Drawing.Size(0, 78);
-            this.MinimumSize = new System.Drawing.Size(80, 78);
+            this.Controls.Add(this.groupBox);
+            this.MaximumSize = new System.Drawing.Size(0, 80);
+            this.MinimumSize = new System.Drawing.Size(62, 80);
             this.Name = "Vector3Panel";
-            this.Size = new System.Drawing.Size(80, 78);
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.Size = new System.Drawing.Size(62, 80);
+            this.groupBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
+        private System.Windows.Forms.GroupBox groupBox;
         private DoublePanel xPanel;
         private DoublePanel yPanel;
         private DoublePanel zPanel;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

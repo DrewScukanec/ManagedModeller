@@ -9,19 +9,23 @@ namespace ManagedModeller.Model {
         private static long nextId = 1;
 
         #region Event handling
-        public delegate void TransformationUpdated(Primitive primitive);
-        public event TransformationUpdated transformationUpdated;
+        private void OnTransformationUpdated(Transformation transformation) {
+            NotifyPrimitiveUpdated();
+        }
 
-        private void NotifyTransformationUpdated(Transformation transformation) {
-            if (transformationUpdated != null) {
-                transformationUpdated.Invoke(this);
+        public delegate void PrimitiveUpdated(Primitive primitive);
+        public event PrimitiveUpdated primitiveUpdated;
+
+        protected void NotifyPrimitiveUpdated() {
+            if (primitiveUpdated != null) {
+                primitiveUpdated.Invoke(this);
             }
         }
         #endregion
 
         protected Primitive() {
             id = Interlocked.Increment(ref nextId);
-            transformation.transformationUpdated += NotifyTransformationUpdated;
+            transformation.transformationUpdated += OnTransformationUpdated;
         }
 
         #region ID
@@ -35,7 +39,7 @@ namespace ManagedModeller.Model {
             get { return new Transformation(transformation); }
             set {
                 transformation = new Transformation(value);
-                NotifyListeners();
+                NotifyPrimitiveUpdated();
             }
         }
         #endregion
@@ -53,7 +57,7 @@ namespace ManagedModeller.Model {
         }
         public void SetColor(float r, float g, float b) {
             this.color = new Vector3(r, g, b);
-            NotifyListeners();
+            NotifyPrimitiveUpdated();
         }
         #endregion Color
 

@@ -26,7 +26,7 @@ namespace ManagedModeller.Model {
             center.X = x;
             center.Y = y;
             center.Z = z;
-            NotifyListeners();
+            NotifyPrimitiveUpdated();
         }
         #endregion
 
@@ -36,7 +36,7 @@ namespace ManagedModeller.Model {
             get { return radius; }
             set {
                 radius = value;
-                NotifyListeners();
+                NotifyPrimitiveUpdated();
             }
         }
         #endregion
@@ -47,7 +47,7 @@ namespace ManagedModeller.Model {
             get { return maxDepth; }
             set {
                 maxDepth = value;
-                NotifyListeners();
+                NotifyPrimitiveUpdated();
             }
         }
         #endregion

@@ -41,7 +41,7 @@ namespace ManagedModeller {
         public void SetScene(Scene scene) {
             if (this.scene != null) {
                 this.scene.primitiveAdded -= SceneUpdated;
-                this.scene.primitiveTransformationUpdated -= SceneUpdated;
+                this.scene.scenePrimitiveUpdated -= SceneUpdated;
             }
             if (camera != null) {
                 camera.cameraUpdated -= CameraUpdated;
@@ -56,7 +56,7 @@ namespace ManagedModeller {
             }
 
             this.scene.primitiveAdded += SceneUpdated;
-            this.scene.primitiveTransformationUpdated += SceneUpdated;
+            this.scene.scenePrimitiveUpdated += SceneUpdated;
             camera.cameraUpdated += CameraUpdated;
 
             camera.Width = glControl.Width;

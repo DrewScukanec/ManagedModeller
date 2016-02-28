@@ -17,7 +17,7 @@ namespace ManagedModeller.Model {
             get { return fovY; }
             set {
                 fovY = value;
-                NotifyListeners();
+                NotifyCameraUpdated();
             }
         }
         #endregion
