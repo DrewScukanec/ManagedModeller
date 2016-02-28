@@ -1,4 +1,5 @@
 ﻿using OpenTK;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace ManagedModeller.Controls {
@@ -36,6 +37,12 @@ namespace ManagedModeller.Controls {
             if (vector4Updated != null) {
                 vector4Updated.Invoke(Value);
             }
+        }
+
+        [Category("User Properties"), Description("Specifies the text identifying the vector")]
+        public string Label {
+            get { return groupBox.Text; }
+            set { groupBox.Text = value; }
         }
     }
 }
