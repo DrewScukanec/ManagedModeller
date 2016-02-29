@@ -41,7 +41,8 @@ namespace ManagedModeller.Controls {
 
         private OrthographicCamera camera;
 
-        private void UpdateFromValue() {
+        public void SetCamera(OrthographicCamera camera) {
+            this.camera = camera;
             namePanel.Value = camera.Name;
             nearPanel.Value = camera.Near;
             farPanel.Value = camera.Far;

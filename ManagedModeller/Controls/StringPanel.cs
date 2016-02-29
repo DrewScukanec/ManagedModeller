@@ -33,7 +33,13 @@ namespace ManagedModeller.Controls {
         private void textBox_KeyDown(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Enter) {
                 NotifyListeners();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
             }
+        }
+
+        private void textBox_Enter(object sender, EventArgs e) {
+            textBox.SelectAll();
         }
 
         private void textBox_Leave(object sender, EventArgs e) {

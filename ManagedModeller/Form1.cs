@@ -38,11 +38,22 @@ namespace ManagedModeller
         }
 
         private void onSceneTreeSelection(object sender, TreeViewEventArgs e) {
+            TreeNode node = e.Node;
+            if (node != null) {
+                SceneElementNode sceneElementNode = (SceneElementNode)node;
+                SceneElement sceneElement = sceneElementNode.SceneElement;
+                if (sceneElement is OrthographicCamera) {
+                    OrthographicCamera camera = (OrthographicCamera) sceneElement;
+                    orthographicCameraPanel.SetCamera(camera);
+                }
+            }
         }
     }
 
     class SceneElementNode : TreeNode {
+
         private SceneElement sceneElement;
+        public SceneElement SceneElement { get { return sceneElement; } }
 
         public SceneElementNode(SceneElement sceneElement) : base(sceneElement.Name) {
             this.sceneElement = sceneElement;

@@ -77,7 +77,6 @@
             this.locationPanel.Name = "locationPanel";
             this.locationPanel.Size = new System.Drawing.Size(79, 81);
             this.locationPanel.TabIndex = 3;
-            this.locationPanel.Value = ((OpenTK.Vector3)(resources.GetObject("locationPanel.Value")));
             // 
             // lookAtPanel
             // 
@@ -89,7 +88,6 @@
             this.lookAtPanel.Name = "lookAtPanel";
             this.lookAtPanel.Size = new System.Drawing.Size(79, 81);
             this.lookAtPanel.TabIndex = 4;
-            this.lookAtPanel.Value = ((OpenTK.Vector3)(resources.GetObject("lookAtPanel.Value")));
             // 
             // upPanel
             // 
@@ -101,7 +99,6 @@
             this.upPanel.Name = "upPanel";
             this.upPanel.Size = new System.Drawing.Size(79, 81);
             this.upPanel.TabIndex = 5;
-            this.upPanel.Value = ((OpenTK.Vector3)(resources.GetObject("upPanel.Value")));
             // 
             // OrthographicCameraPanel
             // 

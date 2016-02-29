@@ -66,6 +66,7 @@
             this.textBox.TabIndex = 0;
             this.textBox.Text = "0.0";
             this.textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBox.Enter += new System.EventHandler(this.textBox_Enter);
             this.textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             this.textBox.Leave += new System.EventHandler(this.textBox_Leave);
             // 

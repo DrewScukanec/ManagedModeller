@@ -24,10 +24,10 @@
         /// </summary>
         private void InitializeComponent() {
             this.groupBox = new System.Windows.Forms.GroupBox();
-            this.xPanel = new ManagedModeller.Controls.DoublePanel();
-            this.yPanel = new ManagedModeller.Controls.DoublePanel();
-            this.zPanel = new ManagedModeller.Controls.DoublePanel();
             this.wPanel = new ManagedModeller.Controls.DoublePanel();
+            this.zPanel = new ManagedModeller.Controls.DoublePanel();
+            this.yPanel = new ManagedModeller.Controls.DoublePanel();
+            this.xPanel = new ManagedModeller.Controls.DoublePanel();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,29 +48,17 @@
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Group";
             // 
-            // xPanel
+            // wPanel
             // 
-            this.xPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.xPanel.Label = "X";
-            this.xPanel.Location = new System.Drawing.Point(3, 16);
-            this.xPanel.MaximumSize = new System.Drawing.Size(0, 20);
-            this.xPanel.MinimumSize = new System.Drawing.Size(58, 20);
-            this.xPanel.Name = "xPanel";
-            this.xPanel.Size = new System.Drawing.Size(58, 20);
-            this.xPanel.TabIndex = 12;
-            this.xPanel.Value = 0D;
-            // 
-            // yPanel
-            // 
-            this.yPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.yPanel.Label = "Y";
-            this.yPanel.Location = new System.Drawing.Point(3, 36);
-            this.yPanel.MaximumSize = new System.Drawing.Size(0, 20);
-            this.yPanel.MinimumSize = new System.Drawing.Size(58, 20);
-            this.yPanel.Name = "yPanel";
-            this.yPanel.Size = new System.Drawing.Size(58, 20);
-            this.yPanel.TabIndex = 12;
-            this.yPanel.Value = 0D;
+            this.wPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.wPanel.Label = "W";
+            this.wPanel.Location = new System.Drawing.Point(3, 76);
+            this.wPanel.MaximumSize = new System.Drawing.Size(0, 20);
+            this.wPanel.MinimumSize = new System.Drawing.Size(58, 20);
+            this.wPanel.Name = "wPanel";
+            this.wPanel.Size = new System.Drawing.Size(58, 20);
+            this.wPanel.TabIndex = 4;
+            this.wPanel.Value = 0D;
             // 
             // zPanel
             // 
@@ -81,20 +69,32 @@
             this.zPanel.MinimumSize = new System.Drawing.Size(58, 20);
             this.zPanel.Name = "zPanel";
             this.zPanel.Size = new System.Drawing.Size(58, 20);
-            this.zPanel.TabIndex = 12;
+            this.zPanel.TabIndex = 3;
             this.zPanel.Value = 0D;
             // 
-            // wPanel
+            // yPanel
             // 
-            this.wPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.wPanel.Label = "W";
-            this.wPanel.Location = new System.Drawing.Point(3, 76);
-            this.wPanel.MaximumSize = new System.Drawing.Size(0, 20);
-            this.wPanel.MinimumSize = new System.Drawing.Size(58, 20);
-            this.wPanel.Name = "wPanel";
-            this.wPanel.Size = new System.Drawing.Size(58, 20);
-            this.wPanel.TabIndex = 12;
-            this.wPanel.Value = 0D;
+            this.yPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.yPanel.Label = "Y";
+            this.yPanel.Location = new System.Drawing.Point(3, 36);
+            this.yPanel.MaximumSize = new System.Drawing.Size(0, 20);
+            this.yPanel.MinimumSize = new System.Drawing.Size(58, 20);
+            this.yPanel.Name = "yPanel";
+            this.yPanel.Size = new System.Drawing.Size(58, 20);
+            this.yPanel.TabIndex = 2;
+            this.yPanel.Value = 0D;
+            // 
+            // xPanel
+            // 
+            this.xPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.xPanel.Label = "X";
+            this.xPanel.Location = new System.Drawing.Point(3, 16);
+            this.xPanel.MaximumSize = new System.Drawing.Size(0, 20);
+            this.xPanel.MinimumSize = new System.Drawing.Size(58, 20);
+            this.xPanel.Name = "xPanel";
+            this.xPanel.Size = new System.Drawing.Size(58, 20);
+            this.xPanel.TabIndex = 1;
+            this.xPanel.Value = 0D;
             // 
             // Vector4Panel
             // 

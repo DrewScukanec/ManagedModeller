@@ -24,9 +24,9 @@
         /// </summary>
         private void InitializeComponent() {
             this.groupBox = new System.Windows.Forms.GroupBox();
-            this.xPanel = new ManagedModeller.Controls.FloatPanel();
-            this.yPanel = new ManagedModeller.Controls.FloatPanel();
             this.zPanel = new ManagedModeller.Controls.FloatPanel();
+            this.yPanel = new ManagedModeller.Controls.FloatPanel();
+            this.xPanel = new ManagedModeller.Controls.FloatPanel();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,17 +46,17 @@
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Group";
             // 
-            // xPanel
+            // zPanel
             // 
-            this.xPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.xPanel.Label = "X";
-            this.xPanel.Location = new System.Drawing.Point(3, 16);
-            this.xPanel.MaximumSize = new System.Drawing.Size(0, 20);
-            this.xPanel.MinimumSize = new System.Drawing.Size(55, 20);
-            this.xPanel.Name = "xPanel";
-            this.xPanel.Size = new System.Drawing.Size(56, 20);
-            this.xPanel.TabIndex = 11;
-            this.xPanel.Value = 0F;
+            this.zPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.zPanel.Label = "Z";
+            this.zPanel.Location = new System.Drawing.Point(3, 56);
+            this.zPanel.MaximumSize = new System.Drawing.Size(0, 20);
+            this.zPanel.MinimumSize = new System.Drawing.Size(55, 20);
+            this.zPanel.Name = "zPanel";
+            this.zPanel.Size = new System.Drawing.Size(56, 20);
+            this.zPanel.TabIndex = 3;
+            this.zPanel.Value = 0F;
             // 
             // yPanel
             // 
@@ -67,20 +67,20 @@
             this.yPanel.MinimumSize = new System.Drawing.Size(55, 20);
             this.yPanel.Name = "yPanel";
             this.yPanel.Size = new System.Drawing.Size(56, 20);
-            this.yPanel.TabIndex = 11;
+            this.yPanel.TabIndex = 2;
             this.yPanel.Value = 0F;
             // 
-            // zPanel
+            // xPanel
             // 
-            this.zPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.zPanel.Label = "Z";
-            this.zPanel.Location = new System.Drawing.Point(3, 56);
-            this.zPanel.MaximumSize = new System.Drawing.Size(0, 20);
-            this.zPanel.MinimumSize = new System.Drawing.Size(55, 20);
-            this.zPanel.Name = "zPanel";
-            this.zPanel.Size = new System.Drawing.Size(56, 20);
-            this.zPanel.TabIndex = 11;
-            this.zPanel.Value = 0F;
+            this.xPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.xPanel.Label = "X";
+            this.xPanel.Location = new System.Drawing.Point(3, 16);
+            this.xPanel.MaximumSize = new System.Drawing.Size(0, 20);
+            this.xPanel.MinimumSize = new System.Drawing.Size(55, 20);
+            this.xPanel.Name = "xPanel";
+            this.xPanel.Size = new System.Drawing.Size(56, 20);
+            this.xPanel.TabIndex = 1;
+            this.xPanel.Value = 0F;
             // 
             // Vector3Panel
             // 
