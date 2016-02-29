@@ -61,6 +61,11 @@ namespace ManagedModeller.Controls {
 
         public void SetCamera(PerspectiveCamera camera) {
             this.camera = camera;
+            camera.cameraUpdated += OnCameraUpdated;
+            UpdateUIFromCamera();
+        }
+
+        private void UpdateUIFromCamera() {
             namePanel.Value = camera.Name;
             nearPanel.Value = camera.Near;
             fovyPanel.Value = camera.FovY;
@@ -68,6 +73,10 @@ namespace ManagedModeller.Controls {
             locationPanel.Value = camera.Location;
             lookAtPanel.Value = camera.LookAt;
             upPanel.Value = camera.Up;
+        }
+
+        private void OnCameraUpdated(Camera camera) {
+            UpdateUIFromCamera();
         }
     }
 }

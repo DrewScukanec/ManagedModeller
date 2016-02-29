@@ -1,4 +1,5 @@
-﻿using ManagedModeller.Model;
+﻿using ManagedModeller.Controls;
+using ManagedModeller.Model;
 using System;
 using System.Windows.Forms;
 
@@ -44,7 +45,22 @@ namespace ManagedModeller
                 SceneElement sceneElement = sceneElementNode.SceneElement;
                 if (sceneElement is OrthographicCamera) {
                     OrthographicCamera camera = (OrthographicCamera) sceneElement;
-                    orthographicCameraPanel.SetCamera(camera);
+
+                    OrthographicCameraPanel panel = new OrthographicCameraPanel();
+                    propertyPage.Controls.Clear();
+                    propertyPage.Controls.Add(panel);
+                    panel.Dock = DockStyle.Top;
+
+                    panel.SetCamera(camera);
+                } else if (sceneElement is PerspectiveCamera) {
+                    PerspectiveCamera camera = (PerspectiveCamera) sceneElement;
+
+                    PerspectiveCameraPanel panel = new PerspectiveCameraPanel();
+                    propertyPage.Controls.Clear();
+                    propertyPage.Controls.Add(panel);
+                    panel.Dock = DockStyle.Top;
+
+                    panel.SetCamera(camera);
                 }
             }
         }

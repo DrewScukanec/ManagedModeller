@@ -38,7 +38,6 @@
             this.scenePage = new System.Windows.Forms.TabPage();
             this.sceneTree = new System.Windows.Forms.TreeView();
             this.propertyPage = new System.Windows.Forms.TabPage();
-            this.orthographicCameraPanel = new ManagedModeller.Controls.OrthographicCameraPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,7 +62,6 @@
             this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.scenePage.SuspendLayout();
-            this.propertyPage.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -184,7 +182,6 @@
             // 
             // propertyPage
             // 
-            this.propertyPage.Controls.Add(this.orthographicCameraPanel);
             this.propertyPage.Location = new System.Drawing.Point(4, 22);
             this.propertyPage.Name = "propertyPage";
             this.propertyPage.Padding = new System.Windows.Forms.Padding(3);
@@ -192,16 +189,6 @@
             this.propertyPage.TabIndex = 1;
             this.propertyPage.Text = "Properties";
             this.propertyPage.UseVisualStyleBackColor = true;
-            // 
-            // orthographicCameraPanel
-            // 
-            this.orthographicCameraPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.orthographicCameraPanel.Location = new System.Drawing.Point(3, 3);
-            this.orthographicCameraPanel.MaximumSize = new System.Drawing.Size(0, 303);
-            this.orthographicCameraPanel.MinimumSize = new System.Drawing.Size(79, 303);
-            this.orthographicCameraPanel.Name = "orthographicCameraPanel";
-            this.orthographicCameraPanel.Size = new System.Drawing.Size(219, 303);
-            this.orthographicCameraPanel.TabIndex = 0;
             // 
             // menuStrip1
             // 
@@ -345,7 +332,6 @@
             this.splitContainer1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.scenePage.ResumeLayout(false);
-            this.propertyPage.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -381,7 +367,6 @@
         private System.Windows.Forms.TabPage scenePage;
         private System.Windows.Forms.TabPage propertyPage;
         private System.Windows.Forms.TreeView sceneTree;
-        private Controls.OrthographicCameraPanel orthographicCameraPanel;
     }
 }
 

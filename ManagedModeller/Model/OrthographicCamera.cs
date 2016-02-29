@@ -48,6 +48,9 @@ namespace ManagedModeller.Model {
             lookAt -= threeDOffset;
             UpdateBasis();
         }
+
+        public override void Rotate(float rotation) {}
+
         #endregion
     }
 }

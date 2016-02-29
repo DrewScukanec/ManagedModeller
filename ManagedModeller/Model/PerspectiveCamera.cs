@@ -1,5 +1,6 @@
 ﻿using OpenTK;
 using OpenTK.Graphics.OpenGL;
+using System;
 
 namespace ManagedModeller.Model {
     public class PerspectiveCamera : Camera {
@@ -46,6 +47,11 @@ namespace ManagedModeller.Model {
                 location -= threeDOffset;
             }
             UpdateBasis();
+        }
+
+        public override void Rotate(float rotation) {
+            Vector3 upPrime = up * ((float) Math.Cos(rotation)) + right * ((float) Math.Sin(rotation));
+            Up = upPrime;
         }
         #endregion
     }

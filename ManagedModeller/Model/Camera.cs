@@ -84,7 +84,7 @@ namespace ManagedModeller.Model {
         public Vector3 LookAt {
             get { return new Vector3(lookAt); }
             set {
-                lookAt = new Vector3(lookAt);
+                lookAt = new Vector3(value);
                 UpdateBasis();
             }
         }
@@ -93,7 +93,7 @@ namespace ManagedModeller.Model {
         public Vector3 Up {
             get { return new Vector3(up); }
             set {
-                up = new Vector3(up);
+                up = new Vector3(value);
                 up.Normalize();
                 UpdateBasis();
             }
@@ -109,16 +109,12 @@ namespace ManagedModeller.Model {
             eyeDirection = lookAt - location;
             eyeDirection.Normalize();
             right = Vector3.Cross(eyeDirection, up);
+            right.Normalize();
+            up = Vector3.Cross(right, eyeDirection);
+            up.Normalize();
             NotifyCameraUpdated();
         }
         #endregion
-
-        protected float rotation = 0;
-        public float GetRotation() { return rotation; }
-        public void SetRotation(float rotation) {
-            this.rotation = rotation;
-            NotifyCameraUpdated();
-        }
 
         protected float zoom = 1;
         public float Zoom {
@@ -131,6 +127,8 @@ namespace ManagedModeller.Model {
 
         public abstract void Shift(Vector2 offset, bool isShiftPressed);
 
+        public abstract void Rotate(float rotation);
+
         #region Rendering
         public abstract void SetProjectionMatrix();
 
@@ -142,7 +140,6 @@ namespace ManagedModeller.Model {
             Matrix4 viewMatrix = Matrix4.LookAt(location, lookAt, up);
             GL.LoadMatrix(ref viewMatrix);
             GL.Scale(zoom, zoom, zoom);
-            GL.Rotate(rotation / ANGLE_SCALE, eyeDirection);
         }
         #endregion
     }

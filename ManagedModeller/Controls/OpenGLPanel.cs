@@ -134,7 +134,7 @@ namespace ManagedModeller {
                 lastY = e.Y;
             } else if (rightMousePressed) {
                 float rotation = (e.Y - lastPhi) * (ModifierKeys.HasFlag(Keys.Control) ? 0.1f : 1.0f);
-                camera.SetRotation(camera.GetRotation() + rotation);
+                camera.Rotate(rotation);
                 lastPhi = e.Y;
             }
         }

@@ -55,12 +55,21 @@ namespace ManagedModeller.Controls {
 
         public void SetCamera(OrthographicCamera camera) {
             this.camera = camera;
+            this.camera.cameraUpdated += OnCameraUpdated;
+            UpdateUIFromCamera();
+        }
+
+        private void UpdateUIFromCamera() {
             namePanel.Value = camera.Name;
             nearPanel.Value = camera.Near;
             farPanel.Value = camera.Far;
             locationPanel.Value = camera.Location;
             lookAtPanel.Value = camera.LookAt;
             upPanel.Value = camera.Up;
+        }
+
+        private void OnCameraUpdated(Camera camera) {
+            UpdateUIFromCamera();
         }
     }
 }
