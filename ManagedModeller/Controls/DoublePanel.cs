@@ -44,6 +44,7 @@ namespace ManagedModeller.Controls {
                 TryUpdateValue();
                 e.Handled = true;
                 e.SuppressKeyPress = true;
+                ParentForm.SelectNextControl(ActiveControl, true, true, true, true);
             }
         }
 
