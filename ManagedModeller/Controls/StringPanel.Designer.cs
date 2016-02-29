@@ -48,19 +48,20 @@
             // 
             this.label.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label.AutoSize = true;
+            this.label.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label.Location = new System.Drawing.Point(3, 3);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(13, 13);
+            this.label.Size = new System.Drawing.Size(14, 14);
             this.label.TabIndex = 0;
             this.label.Text = "L";
             // 
             // textBox
             // 
-            this.textBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox.Location = new System.Drawing.Point(19, 0);
-            this.textBox.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.textBox.Location = new System.Drawing.Point(23, 0);
+            this.textBox.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(141, 20);
+            this.textBox.Size = new System.Drawing.Size(30, 20);
             this.textBox.TabIndex = 1;
             // 
             // StringPanel
