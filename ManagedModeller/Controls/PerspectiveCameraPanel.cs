@@ -3,8 +3,7 @@ using OpenTK;
 using System.Windows.Forms;
 
 namespace ManagedModeller.Controls {
-    public partial class OrthographicCameraPanel : UserControl {
-
+    public partial class PerspectiveCameraPanel : UserControl {
         private void OnNameUpdated(string value) {
             if (camera != null) {
                 camera.Name = value;
@@ -20,6 +19,12 @@ namespace ManagedModeller.Controls {
         private void OnFarUpdated(float value) {
             if (camera != null) {
                 camera.Far = value;
+            }
+        }
+
+        private void OnFovyUpdated(float value) {
+            if (camera != null) {
+                camera.FovY = value;
             }
         }
 
@@ -41,22 +46,24 @@ namespace ManagedModeller.Controls {
             }
         }
 
-        public OrthographicCameraPanel() {
+        public PerspectiveCameraPanel() {
             InitializeComponent();
             namePanel.valueUpdated += OnNameUpdated;
             nearPanel.valueUpdated += OnNearUpdated;
             farPanel.valueUpdated += OnFarUpdated;
+            fovyPanel.valueUpdated += OnFovyUpdated;
             locationPanel.vector3Updated += OnLocationUpdated;
             lookAtPanel.vector3Updated += OnLookAtUpdated;
             upPanel.vector3Updated += OnUpUpdated;
         }
 
-        private OrthographicCamera camera;
+        private PerspectiveCamera camera;
 
-        public void SetCamera(OrthographicCamera camera) {
+        public void SetCamera(PerspectiveCamera camera) {
             this.camera = camera;
             namePanel.Value = camera.Name;
             nearPanel.Value = camera.Near;
+            fovyPanel.Value = camera.FovY;
             farPanel.Value = camera.Far;
             locationPanel.Value = camera.Location;
             lookAtPanel.Value = camera.LookAt;
