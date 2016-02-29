@@ -7,27 +7,27 @@ namespace ManagedModeller.Model {
         #region Static
         public static OrthographicCamera CreateXOrthographic() {
             OrthographicCamera camera = new OrthographicCamera();
-            camera.SetLocation(new Vector3(100, 0, 0));
-            camera.SetLookAt(new Vector3(0, 0, 0));
-            camera.SetUp(new Vector3(0, 1, 0));
+            camera.Location = new Vector3(100, 0, 0);
+            camera.LookAt = new Vector3(0, 0, 0);
+            camera.Up = new Vector3(0, 1, 0);
             camera.Name = "X Orthographic";
             return camera;
         }
 
         public static OrthographicCamera CreateYOrthographic() {
             OrthographicCamera camera = new OrthographicCamera();
-            camera.SetLocation(new Vector3(0, 100, 0));
-            camera.SetLookAt(new Vector3(0, 0, 0));
-            camera.SetUp(new Vector3(0, 0, -1));
+            camera.Location = new Vector3(0, 100, 0);
+            camera.LookAt = new Vector3(0, 0, 0);
+            camera.Up = new Vector3(0, 0, -1);
             camera.Name = "Y Orthographic";
             return camera;
         }
 
         public static OrthographicCamera CreateZOrthographic() {
             OrthographicCamera camera = new OrthographicCamera();
-            camera.SetLocation(new Vector3(0, 0, 100));
-            camera.SetLookAt(new Vector3(0, 0, 0));
-            camera.SetUp(new Vector3(0, 1, 0));
+            camera.Location = new Vector3(0, 0, 100);
+            camera.LookAt = new Vector3(0, 0, 0);
+            camera.Up = new Vector3(0, 1, 0);
             camera.Name = "Z Orthographic";
             return camera;
         }

@@ -3,22 +3,22 @@ using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace ManagedModeller.Controls {
-    public partial class Vector3Panel : UserControl {
+    public partial class Vector3dPanel : UserControl {
 
-        public delegate void Vector3Updated(Vector3 newValue);
+        public delegate void Vector3dUpdated(Vector3d newValue);
 
-        public event Vector3Updated vector3Updated;
+        public event Vector3dUpdated vector3dUpdated;
 
-        public Vector3Panel() {
+        public Vector3dPanel() {
             InitializeComponent();
             xPanel.valueUpdated += ValueUpdated;
             yPanel.valueUpdated += ValueUpdated;
             zPanel.valueUpdated += ValueUpdated;
         }
 
-        public Vector3 Value {
+        public Vector3d Value {
             get {
-                return new Vector3(xPanel.Value, yPanel.Value, zPanel.Value);
+                return new Vector3d(xPanel.Value, yPanel.Value, zPanel.Value);
             }
             set {
                 xPanel.Value = value.X;
@@ -27,13 +27,13 @@ namespace ManagedModeller.Controls {
             }
         }
 
-        private void ValueUpdated(float newValue) {
+        private void ValueUpdated(double newValue) {
             NotifyListeners();
         }
 
         private void NotifyListeners() {
-            if (vector3Updated != null) {
-                vector3Updated.Invoke(Value);
+            if (vector3dUpdated != null) {
+                vector3dUpdated.Invoke(Value);
             }
         }
 

@@ -17,15 +17,15 @@ namespace ManagedModeller.Controls {
             camera.Far = value;
         }
 
-        private void OnLocationUpdated(Vector3d value) {
+        private void OnLocationUpdated(Vector3 value) {
             camera.Location = value;
         }
 
-        private void OnLookAtUpdated(Vector3d value) {
+        private void OnLookAtUpdated(Vector3 value) {
             camera.LookAt = value;
         }
 
-        private void OnUpUpdated(Vector3d value) {
+        private void OnUpUpdated(Vector3 value) {
             camera.Up = value;
         }
 

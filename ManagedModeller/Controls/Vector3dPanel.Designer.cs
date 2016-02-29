@@ -1,5 +1,5 @@
 ﻿namespace ManagedModeller.Controls {
-    partial class Vector3Panel {
+    partial class Vector3dPanel {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
@@ -24,9 +24,9 @@
         /// </summary>
         private void InitializeComponent() {
             this.groupBox = new System.Windows.Forms.GroupBox();
-            this.xPanel = new ManagedModeller.Controls.FloatPanel();
-            this.yPanel = new ManagedModeller.Controls.FloatPanel();
-            this.zPanel = new ManagedModeller.Controls.FloatPanel();
+            this.xPanel = new ManagedModeller.Controls.DoublePanel();
+            this.yPanel = new ManagedModeller.Controls.DoublePanel();
+            this.zPanel = new ManagedModeller.Controls.DoublePanel();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -38,11 +38,11 @@
             this.groupBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox.Location = new System.Drawing.Point(0, 0);
-            this.groupBox.MaximumSize = new System.Drawing.Size(0, 82);
-            this.groupBox.MinimumSize = new System.Drawing.Size(62, 82);
+            this.groupBox.MaximumSize = new System.Drawing.Size(0, 81);
+            this.groupBox.MinimumSize = new System.Drawing.Size(70, 81);
             this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(62, 82);
-            this.groupBox.TabIndex = 10;
+            this.groupBox.Size = new System.Drawing.Size(70, 81);
+            this.groupBox.TabIndex = 0;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Group";
             // 
@@ -54,9 +54,9 @@
             this.xPanel.MaximumSize = new System.Drawing.Size(0, 20);
             this.xPanel.MinimumSize = new System.Drawing.Size(55, 20);
             this.xPanel.Name = "xPanel";
-            this.xPanel.Size = new System.Drawing.Size(56, 20);
-            this.xPanel.TabIndex = 11;
-            this.xPanel.Value = 0F;
+            this.xPanel.Size = new System.Drawing.Size(64, 20);
+            this.xPanel.TabIndex = 1;
+            this.xPanel.Value = 0D;
             // 
             // yPanel
             // 
@@ -66,9 +66,9 @@
             this.yPanel.MaximumSize = new System.Drawing.Size(0, 20);
             this.yPanel.MinimumSize = new System.Drawing.Size(55, 20);
             this.yPanel.Name = "yPanel";
-            this.yPanel.Size = new System.Drawing.Size(56, 20);
-            this.yPanel.TabIndex = 11;
-            this.yPanel.Value = 0F;
+            this.yPanel.Size = new System.Drawing.Size(64, 20);
+            this.yPanel.TabIndex = 2;
+            this.yPanel.Value = 0D;
             // 
             // zPanel
             // 
@@ -78,28 +78,29 @@
             this.zPanel.MaximumSize = new System.Drawing.Size(0, 20);
             this.zPanel.MinimumSize = new System.Drawing.Size(55, 20);
             this.zPanel.Name = "zPanel";
-            this.zPanel.Size = new System.Drawing.Size(56, 20);
-            this.zPanel.TabIndex = 11;
-            this.zPanel.Value = 0F;
+            this.zPanel.Size = new System.Drawing.Size(64, 20);
+            this.zPanel.TabIndex = 3;
+            this.zPanel.Value = 0D;
             // 
-            // Vector3Panel
+            // Vector3dPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox);
             this.MaximumSize = new System.Drawing.Size(0, 81);
-            this.MinimumSize = new System.Drawing.Size(62, 81);
-            this.Name = "Vector3Panel";
-            this.Size = new System.Drawing.Size(62, 81);
+            this.MinimumSize = new System.Drawing.Size(70, 81);
+            this.Name = "Vector3dPanel";
+            this.Size = new System.Drawing.Size(70, 81);
             this.groupBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
         private System.Windows.Forms.GroupBox groupBox;
-        private FloatPanel xPanel;
-        private FloatPanel yPanel;
-        private FloatPanel zPanel;
+        private DoublePanel xPanel;
+        private DoublePanel yPanel;
+        private DoublePanel zPanel;
     }
 }
