@@ -24,33 +24,33 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TransformationPanel));
-            this.scalePanel = new ManagedModeller.Controls.Vector3Panel();
-            this.translatePanel = new ManagedModeller.Controls.Vector3Panel();
+            this.translatePanel = new ManagedModeller.Controls.Vector3dPanel();
+            this.scalePanel = new ManagedModeller.Controls.Vector3dPanel();
             this.SuspendLayout();
-            // 
-            // scalePanel
-            // 
-            this.scalePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.scalePanel.Label = "Scale";
-            this.scalePanel.Location = new System.Drawing.Point(0, 82);
-            this.scalePanel.MaximumSize = new System.Drawing.Size(0, 82);
-            this.scalePanel.MinimumSize = new System.Drawing.Size(80, 82);
-            this.scalePanel.Name = "scalePanel";
-            this.scalePanel.Size = new System.Drawing.Size(98, 82);
-            this.scalePanel.TabIndex = 1;
-            this.scalePanel.Value = ((OpenTK.Vector3d)(resources.GetObject("scalePanel.Value")));
             // 
             // translatePanel
             // 
             this.translatePanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.translatePanel.Label = "Translation";
             this.translatePanel.Location = new System.Drawing.Point(0, 0);
-            this.translatePanel.MaximumSize = new System.Drawing.Size(0, 82);
-            this.translatePanel.MinimumSize = new System.Drawing.Size(80, 82);
+            this.translatePanel.MaximumSize = new System.Drawing.Size(0, 81);
+            this.translatePanel.MinimumSize = new System.Drawing.Size(70, 81);
             this.translatePanel.Name = "translatePanel";
-            this.translatePanel.Size = new System.Drawing.Size(98, 82);
+            this.translatePanel.Size = new System.Drawing.Size(98, 81);
             this.translatePanel.TabIndex = 0;
             this.translatePanel.Value = ((OpenTK.Vector3d)(resources.GetObject("translatePanel.Value")));
+            // 
+            // scalePanel
+            // 
+            this.scalePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.scalePanel.Label = "Scale";
+            this.scalePanel.Location = new System.Drawing.Point(0, 81);
+            this.scalePanel.MaximumSize = new System.Drawing.Size(0, 81);
+            this.scalePanel.MinimumSize = new System.Drawing.Size(70, 81);
+            this.scalePanel.Name = "scalePanel";
+            this.scalePanel.Size = new System.Drawing.Size(98, 81);
+            this.scalePanel.TabIndex = 1;
+            this.scalePanel.Value = ((OpenTK.Vector3d)(resources.GetObject("scalePanel.Value")));
             // 
             // TransformationPanel
             // 
@@ -69,7 +69,7 @@
 
         #endregion
 
-        private Vector3Panel translatePanel;
-        private Vector3Panel scalePanel;
+        private Vector3dPanel translatePanel;
+        private Vector3dPanel scalePanel;
     }
 }

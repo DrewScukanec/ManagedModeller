@@ -6,14 +6,14 @@ namespace ManagedModeller.Controls {
     public partial class TransformationPanel : UserControl {
 
         public delegate void TransformationUpdated(Transformation transformation);
+        public event TransformationUpdated transformationUpdated;
 
         private Transformation transformation;
-        public event TransformationUpdated transformationUpdated;
 
         public TransformationPanel() {
             InitializeComponent();
-            scalePanel.vector3Updated += TranslationUpdated;
-            translatePanel.vector3Updated += ScaleUpdated;
+            scalePanel.vector3dUpdated += OnTranslationUpdated;
+            translatePanel.vector3dUpdated += OnScaleUpdated;
         }
 
         public void SetTransformation(Transformation transformation) {
@@ -22,17 +22,17 @@ namespace ManagedModeller.Controls {
             translatePanel.Value = transformation.Scale;
         }
 
-        private void TranslationUpdated(Vector3d newValue) {
+        private void OnTranslationUpdated(Vector3d newValue) {
             transformation.Translation = newValue;
-            NotifyListeners();
+            NotifyTransformationUpdated();
         }
 
-        private void ScaleUpdated(Vector3d newValue) {
+        private void OnScaleUpdated(Vector3d newValue) {
             transformation.Scale = newValue;
-            NotifyListeners();
+            NotifyTransformationUpdated();
         }
 
-        private void NotifyListeners() {
+        private void NotifyTransformationUpdated() {
             if (transformationUpdated != null) {
                 transformationUpdated.Invoke(transformation);
             }
