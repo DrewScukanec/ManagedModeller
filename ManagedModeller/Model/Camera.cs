@@ -70,29 +70,41 @@ namespace ManagedModeller.Model {
 
         #region ThreeD Properties
         protected Vector3 location = new Vector3();
-        public Vector3 GetLocation() { return new Vector3(location); }
-        public void SetLocation(Vector3 location) {
-            this.location.X = location.X;
-            this.location.Y = location.Y;
-            this.location.Z = location.Z;
-            UpdateBasis();
+        public Vector3 Location {
+            get { return new Vector3(location); }
+            set {
+                location.X = value.X;
+                location.Y = value.Y;
+                location.Z = value.Z;
+                UpdateBasis();
+            }
         }
 
         protected Vector3 lookAt = new Vector3();
-        public void SetLookAt(Vector3 lookAt) {
-            this.lookAt = new Vector3(lookAt);
-            UpdateBasis();
+        public Vector3 LookAt {
+            get { return new Vector3(lookAt); }
+            set {
+                lookAt = new Vector3(lookAt);
+                UpdateBasis();
+            }
         }
 
         protected Vector3 up = new Vector3(0, 1, 0);
-        public void SetUp(Vector3 up) {
-            this.up = new Vector3(up);
-            this.up.Normalize();
-            UpdateBasis();
+        public Vector3 Up {
+            get { return new Vector3(up); }
+            set {
+                up = new Vector3(up);
+                up.Normalize();
+                UpdateBasis();
+            }
         }
 
         protected Vector3 eyeDirection = new Vector3();
+        public Vector3 EyeDirection { get { return new Vector3(eyeDirection); } }
+
         protected Vector3 right = new Vector3();
+        public Vector3 Right { get { return new Vector3(right); } }
+
         protected void UpdateBasis() {
             eyeDirection = lookAt - location;
             eyeDirection.Normalize();
