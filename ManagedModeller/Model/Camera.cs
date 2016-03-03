@@ -161,30 +161,22 @@ namespace ManagedModeller.Model {
         }
         #endregion
 
-        protected float zoom = 1;
-        public float Zoom {
-            get { return zoom; }
-            set {
-                zoom = value;
-                NotifyCameraUpdated();
-            }
-        }
-
         public abstract void Shift(Vector2 offset, bool isShiftPressed);
 
         public abstract void Rotate(float rotation);
 
+        public abstract void Wheel(float distance, bool isControlPressed);
+
         #region Rendering
         public abstract void SetProjectionMatrix();
 
-        public void SetModelViewMatrix() {
+        public virtual void SetModelViewMatrix() {
             GL.PolygonMode(MaterialFace.Front, polygonMode);
             GL.PolygonMode(MaterialFace.Back, PolygonMode.Line);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
             Matrix4 viewMatrix = Matrix4.LookAt(location, lookAt, up);
             GL.LoadMatrix(ref viewMatrix);
-            GL.Scale(zoom, zoom, zoom);
         }
         #endregion
     }

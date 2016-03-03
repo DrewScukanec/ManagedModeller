@@ -1,4 +1,5 @@
-﻿using OpenTK;
+﻿using System;
+using OpenTK;
 using OpenTK.Graphics.OpenGL;
 
 namespace ManagedModeller.Model {
@@ -36,11 +37,25 @@ namespace ManagedModeller.Model {
         }
         #endregion
 
+        protected float zoom = 1;
+        public float Zoom {
+            get { return zoom; }
+            set {
+                zoom = value;
+                NotifyCameraUpdated();
+            }
+        }
+
         #region Rendering
         public override void SetProjectionMatrix() {
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadIdentity();
             GL.Ortho(-width / 2, width / 2, -height / 2, height / 2, near, far);
+        }
+
+        public override void SetModelViewMatrix() {
+            base.SetModelViewMatrix();
+            GL.Scale(zoom, zoom, zoom);
         }
         #endregion
 
@@ -53,6 +68,12 @@ namespace ManagedModeller.Model {
         }
 
         public override void Rotate(float rotation) {}
+
+        public override void Wheel(float distance, bool isControlPressed) {
+            float modifier = isControlPressed ? 0.1f : 1.0f;
+            float zoom = (float) Math.Exp(distance / 750.0 * modifier);
+            Zoom *= zoom;
+        }
 
         #endregion
     }

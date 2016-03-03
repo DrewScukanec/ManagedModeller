@@ -8,6 +8,8 @@ namespace ManagedModeller.Model {
         public PerspectiveCamera() {
             location = new Vector3(100, 100, 0);
             lookAt = new Vector3(0, 0, 0);
+            eyeDirection = new Vector3(-1, -1, 0);
+            eyeDirection.Normalize();
             up = new Vector3(-1, 1, 0);
             up.Normalize();
             right = new Vector3(0, 0, -1);
@@ -46,14 +48,22 @@ namespace ManagedModeller.Model {
                 Right = right * ((float) Math.Cos(rotationAroundUp)) + eyeDirection * ((float) Math.Sin(rotationAroundUp));
             } else {
                 Vector3 threeDOffset = right * offset.X + up * offset.Y;
-                location = location - threeDOffset;
-                lookAt = lookAt - threeDOffset;
+                location -= threeDOffset;
+                lookAt -= threeDOffset;
                 NotifyCameraUpdated();
             }
         }
 
         public override void Rotate(float rotation) {
             Up = up * ((float) Math.Cos(rotation)) + right * ((float) Math.Sin(rotation));
+        }
+
+        public override void Wheel(float distance, bool isControlPressed) {
+            float modifier = isControlPressed ? 0.05f : 0.5f;
+            Vector3 threeDOffset = distance * modifier * eyeDirection;
+            location += threeDOffset;
+            lookAt += threeDOffset;
+            NotifyCameraUpdated();
         }
         #endregion
     }

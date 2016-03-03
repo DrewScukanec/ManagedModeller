@@ -162,9 +162,7 @@ namespace ManagedModeller {
 
         private void glControlOnMouseWheel(object sender, MouseEventArgs e) {
             if (!leftMousePressed && !rightMousePressed) {
-                float modifier = (ModifierKeys.HasFlag(Keys.Control) ? 0.1f : 1.0f);
-                float zoom = (float)Math.Exp(e.Delta / 750.0 * modifier);
-                camera.Zoom = camera.Zoom * zoom;
+                camera.Wheel(e.Delta, ModifierKeys.HasFlag(Keys.Control));
             }
         }
 
