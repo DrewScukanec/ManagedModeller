@@ -1,12 +1,15 @@
 ﻿using ManagedModeller.Controls;
 using ManagedModeller.Model;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace ManagedModeller
 {
     public partial class Form1 : Form
     {
+        Dictionary<Type, Object> map;
+
         public Form1()
         {
             InitializeComponent();
