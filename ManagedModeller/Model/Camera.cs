@@ -69,14 +69,23 @@ namespace ManagedModeller.Model {
         #endregion
 
         #region ThreeD Properties
-        protected Vector3 location = new Vector3();
+        protected Vector3 location = new Vector3(1, 0, 1);
         public Vector3 Location {
             get { return new Vector3(location); }
             set {
                 location.X = value.X;
                 location.Y = value.Y;
                 location.Z = value.Z;
-                UpdateBasis();
+
+                eyeDirection = lookAt - location;
+                eyeDirection.Normalize();
+
+                up = Vector3.Cross(right, eyeDirection);
+                up.Normalize();
+                right = Vector3.Cross(eyeDirection, up);
+                right.Normalize();
+
+                NotifyCameraUpdated();
             }
         }
 
@@ -85,7 +94,33 @@ namespace ManagedModeller.Model {
             get { return new Vector3(lookAt); }
             set {
                 lookAt = new Vector3(value);
-                UpdateBasis();
+
+                eyeDirection = lookAt - location;
+                eyeDirection.Normalize();
+
+                up = Vector3.Cross(right, eyeDirection);
+                up.Normalize();
+                right = Vector3.Cross(eyeDirection, up);
+                right.Normalize();
+
+                NotifyCameraUpdated();
+            }
+        }
+
+        protected Vector3 eyeDirection = new Vector3();
+        public Vector3 EyeDirection {
+            get { return new Vector3(eyeDirection); }
+            set {
+                eyeDirection = value;
+                eyeDirection.Normalize();
+                lookAt = location + eyeDirection;
+
+                up = Vector3.Cross(right, eyeDirection);
+                up.Normalize();
+                right = Vector3.Cross(eyeDirection, up);
+                right.Normalize();
+
+                NotifyCameraUpdated();
             }
         }
 
@@ -95,24 +130,34 @@ namespace ManagedModeller.Model {
             set {
                 up = new Vector3(value);
                 up.Normalize();
-                UpdateBasis();
+
+                eyeDirection = Vector3.Cross(up, right);
+                eyeDirection.Normalize();
+                lookAt = location + eyeDirection;
+
+                right = Vector3.Cross(eyeDirection, up);
+                right.Normalize();
+
+                NotifyCameraUpdated();
             }
         }
 
-        protected Vector3 eyeDirection = new Vector3();
-        public Vector3 EyeDirection { get { return new Vector3(eyeDirection); } }
-
         protected Vector3 right = new Vector3();
-        public Vector3 Right { get { return new Vector3(right); } }
+        public Vector3 Right {
+            get { return new Vector3(right); }
+            set {
+                right = new Vector3(value);
+                right.Normalize();
 
-        protected void UpdateBasis() {
-            eyeDirection = lookAt - location;
-            eyeDirection.Normalize();
-            right = Vector3.Cross(eyeDirection, up);
-            right.Normalize();
-            up = Vector3.Cross(right, eyeDirection);
-            up.Normalize();
-            NotifyCameraUpdated();
+                up = Vector3.Cross(right, eyeDirection);
+                up.Normalize();
+
+                eyeDirection = Vector3.Cross(up, right);
+                eyeDirection.Normalize();
+                lookAt = location + eyeDirection;
+
+                NotifyCameraUpdated();
+            }
         }
         #endregion
 

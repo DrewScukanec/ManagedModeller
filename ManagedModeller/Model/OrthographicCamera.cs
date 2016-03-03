@@ -7,27 +7,30 @@ namespace ManagedModeller.Model {
         #region Static
         public static OrthographicCamera CreateXOrthographic() {
             OrthographicCamera camera = new OrthographicCamera();
-            camera.Location = new Vector3(100, 0, 0);
-            camera.LookAt = new Vector3(0, 0, 0);
-            camera.Up = new Vector3(0, 1, 0);
+            camera.location = new Vector3(100, 0, 0);
+            camera.lookAt = new Vector3(0, 0, 0);
+            camera.up = new Vector3(0, 1, 0);
+            camera.right = new Vector3(0, 0, -1);
             camera.Name = "X Orthographic";
             return camera;
         }
 
         public static OrthographicCamera CreateYOrthographic() {
             OrthographicCamera camera = new OrthographicCamera();
-            camera.Location = new Vector3(0, 100, 0);
-            camera.LookAt = new Vector3(0, 0, 0);
-            camera.Up = new Vector3(0, 0, -1);
+            camera.location = new Vector3(0, 100, 0);
+            camera.lookAt = new Vector3(0, 0, 0);
+            camera.up = new Vector3(0, 0, -1);
+            camera.right = new Vector3(1, 0, 0);
             camera.Name = "Y Orthographic";
             return camera;
         }
 
         public static OrthographicCamera CreateZOrthographic() {
             OrthographicCamera camera = new OrthographicCamera();
-            camera.Location = new Vector3(0, 0, 100);
-            camera.LookAt = new Vector3(0, 0, 0);
-            camera.Up = new Vector3(0, 1, 0);
+            camera.location = new Vector3(0, 0, 100);
+            camera.lookAt = new Vector3(0, 0, 0);
+            camera.up = new Vector3(0, 1, 0);
+            camera.right = new Vector3(1, 0, 0);
             camera.Name = "Z Orthographic";
             return camera;
         }
@@ -46,7 +49,7 @@ namespace ManagedModeller.Model {
             Vector3 threeDOffset = right * offset.X + up * offset.Y;
             location -= threeDOffset;
             lookAt -= threeDOffset;
-            UpdateBasis();
+            NotifyCameraUpdated();
         }
 
         public override void Rotate(float rotation) {}

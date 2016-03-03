@@ -6,9 +6,11 @@ namespace ManagedModeller.Model {
     public class PerspectiveCamera : Camera {
 
         public PerspectiveCamera() {
-            Location = new Vector3(100, 100, 100);
-            LookAt = new Vector3(0, 0, 0);
-            Up = new Vector3(0, 1, 0);
+            location = new Vector3(100, 100, 0);
+            lookAt = new Vector3(0, 0, 0);
+            up = new Vector3(-1, 1, 0);
+            up.Normalize();
+            right = new Vector3(0, 0, -1);
             Name = "Perspective Camera";
         }
 
@@ -23,11 +25,8 @@ namespace ManagedModeller.Model {
         }
         #endregion
 
-        #region Aspect Ratio
-        public float AspectRatio {
-            get { return ((float)width) / height; }
-        }
-        #endregion
+        public float AspectRatio { get { return ((float) width) / height; } }
+        public float FovX { get { return (float) (2 * Math.Atan(Math.Tan(FovY / 2) * AspectRatio)); } }
 
         #region Rendering
         public override void SetProjectionMatrix() {
@@ -40,18 +39,21 @@ namespace ManagedModeller.Model {
 
         #region Event Response
         public override void Shift(Vector2 offset, bool isShiftPressed) {
-            Vector3 threeDOffset = right * offset.X + up * offset.Y;
             if (isShiftPressed) {
-                lookAt -= threeDOffset;
+                float rotationAroundRight = offset.Y / Height * FovY;
+                float rotationAroundUp = offset.X / Width * FovX;
+                Up = up * ((float) Math.Cos(rotationAroundRight)) + eyeDirection * ((float) Math.Sin(rotationAroundRight));
+                Right = right * ((float) Math.Cos(rotationAroundUp)) + eyeDirection * ((float) Math.Sin(rotationAroundUp));
             } else {
-                location -= threeDOffset;
+                Vector3 threeDOffset = right * offset.X + up * offset.Y;
+                location = location - threeDOffset;
+                lookAt = lookAt - threeDOffset;
+                NotifyCameraUpdated();
             }
-            UpdateBasis();
         }
 
         public override void Rotate(float rotation) {
-            Vector3 upPrime = up * ((float) Math.Cos(rotation)) + right * ((float) Math.Sin(rotation));
-            Up = upPrime;
+            Up = up * ((float) Math.Cos(rotation)) + right * ((float) Math.Sin(rotation));
         }
         #endregion
     }
