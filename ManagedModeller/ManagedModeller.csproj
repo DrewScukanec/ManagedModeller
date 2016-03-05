@@ -64,6 +64,12 @@
     <Compile Include="Controls\FloatPanel.Designer.cs">
       <DependentUpon>FloatPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\IntPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\IntPanel.Designer.cs">
+      <DependentUpon>IntPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\OrthographicCameraPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -75,6 +81,12 @@
     </Compile>
     <Compile Include="Controls\PerspectiveCameraPanel.Designer.cs">
       <DependentUpon>PerspectiveCameraPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SpherePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SpherePanel.Designer.cs">
+      <DependentUpon>SpherePanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\StringPanel.cs">
       <SubType>UserControl</SubType>
@@ -135,11 +147,17 @@
     <EmbeddedResource Include="Controls\FloatPanel.resx">
       <DependentUpon>FloatPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\IntPanel.resx">
+      <DependentUpon>IntPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\OrthographicCameraPanel.resx">
       <DependentUpon>OrthographicCameraPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\PerspectiveCameraPanel.resx">
       <DependentUpon>PerspectiveCameraPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SpherePanel.resx">
+      <DependentUpon>SpherePanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\StringPanel.resx">
       <DependentUpon>StringPanel.cs</DependentUpon>

@@ -12,14 +12,17 @@ namespace ManagedModeller.Controls {
 
         public TransformationPanel() {
             InitializeComponent();
-            scalePanel.vector3dUpdated += OnTranslationUpdated;
-            translatePanel.vector3dUpdated += OnScaleUpdated;
+            translatePanel.vector3dUpdated += OnTranslationUpdated;
+            scalePanel.vector3dUpdated += OnScaleUpdated;
         }
 
-        public void SetTransformation(Transformation transformation) {
-            this.transformation = new Transformation(transformation);
-            scalePanel.Value = transformation.Translation;
-            translatePanel.Value = transformation.Scale;
+        public Transformation Value {
+            get { return new Transformation(transformation); }
+            set {
+                transformation = new Transformation(value);
+                translatePanel.Value = transformation.Translation;
+                scalePanel.Value = transformation.Scale;
+            }
         }
 
         private void OnTranslationUpdated(Vector3d newValue) {

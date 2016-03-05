@@ -15,32 +15,6 @@ namespace ManagedModeller.Model {
         private static Vector3 BACK = new Vector3(0, 0, -1);
         #endregion
 
-        #region Center
-        private Vector3d center = new Vector3d();
-        public Vector3d Center {
-            get { return new Vector3d(center); }
-            set { SetCenter(value.X, value.Y, value.Z); }
-        }
-        public void GetCenter(out Vector3d result) { result = new Vector3d(center); }
-        public void SetCenter(double x, double y, double z) {
-            center.X = x;
-            center.Y = y;
-            center.Z = z;
-            NotifyPrimitiveUpdated();
-        }
-        #endregion
-
-        #region Radius
-        private double radius = 1.0;
-        public double Radius {
-            get { return radius; }
-            set {
-                radius = value;
-                NotifyPrimitiveUpdated();
-            }
-        }
-        #endregion
-
         #region MaxDepth
         private int maxDepth = 4;
         public int MaxDepth {

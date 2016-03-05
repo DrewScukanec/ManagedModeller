@@ -64,6 +64,15 @@ namespace ManagedModeller
                     panel.Dock = DockStyle.Top;
 
                     panel.SetCamera(camera);
+                } else if (sceneElement is Sphere) {
+                    Sphere sphere = (Sphere)sceneElement;
+
+                    SpherePanel panel = new SpherePanel();
+                    propertyPage.Controls.Clear();
+                    propertyPage.Controls.Add(panel);
+                    panel.Dock = DockStyle.Top;
+
+                    panel.SetSphere(sphere);
                 }
             }
         }

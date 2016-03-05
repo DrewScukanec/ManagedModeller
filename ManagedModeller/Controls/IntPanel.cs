@@ -13,7 +13,7 @@ namespace ManagedModeller.Controls {
 
         public delegate void ValueUpdated(int newValue);
 
-        private int lastGoodValue;
+        private int lastGoodValue = 0;
         public event ValueUpdated valueUpdated;
 
         public IntPanel() {
