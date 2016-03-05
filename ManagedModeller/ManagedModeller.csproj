@@ -131,6 +131,7 @@
     <Compile Include="Controls\OpenGLPanel.Designer.cs">
       <DependentUpon>OpenGLPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Cylinder.cs" />
     <Compile Include="Model\SceneElement.cs" />
     <Compile Include="Model\OrthographicCamera.cs" />
     <Compile Include="Model\PerspectiveCamera.cs" />

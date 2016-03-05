@@ -43,11 +43,20 @@ namespace ManagedModeller.Model {
         #endregion
 
         public Scene() {
-            Sphere();
+            Cylinder();
+            //Sphere();
             //Triangles();
         }
 
         #region Initial Setup
+        private void Cylinder() {
+            Cylinder c = new Cylinder();
+            c.Transformation = Transformation.ScaleBy(50, 50, 50);
+            c.SetColor(0, 1.0f, 1.0f);
+            c.Name = "Blue Cylinder";
+            AddPrimitive(c);
+        }
+
         private void Sphere() {
             Sphere s = new Sphere();
             s.Transformation = Transformation.ScaleBy(50, 50, 50);
