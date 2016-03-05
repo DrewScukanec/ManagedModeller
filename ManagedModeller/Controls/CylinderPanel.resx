@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="transformation1.Rotation" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="transformation2.Rotation" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAElPcGVuVEssIFZlcnNpb249MS4xLjAuMCwgQ3VsdHVyZT1uZXV0
         cmFsLCBQdWJsaWNLZXlUb2tlbj1iYWQxOTlmZTg0ZWIzZGY0BQEAAAAST3BlblRLLlF1YXRlcm5pb25k
@@ -125,14 +125,14 @@
         AAABWAFZAVoAAAAGBgYCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL
 </value>
   </data>
-  <data name="transformation1.Scale" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="transformation2.Scale" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAElPcGVuVEssIFZlcnNpb249MS4xLjAuMCwgQ3VsdHVyZT1uZXV0
         cmFsLCBQdWJsaWNLZXlUb2tlbj1iYWQxOTlmZTg0ZWIzZGY0BQEAAAAPT3BlblRLLlZlY3RvcjNkAwAA
         AAFYAVkBWgAAAAYGBgIAAAAAAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8L
 </value>
   </data>
-  <data name="transformation1.Translation" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="transformation2.Translation" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAElPcGVuVEssIFZlcnNpb249MS4xLjAuMCwgQ3VsdHVyZT1uZXV0
         cmFsLCBQdWJsaWNLZXlUb2tlbj1iYWQxOTlmZTg0ZWIzZGY0BQEAAAAPT3BlblRLLlZlY3RvcjNkAwAA

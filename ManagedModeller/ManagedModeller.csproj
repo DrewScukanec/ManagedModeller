@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\CylinderPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CylinderPanel.Designer.cs">
+      <DependentUpon>CylinderPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DoublePanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -82,6 +88,7 @@
     <Compile Include="Controls\PerspectiveCameraPanel.Designer.cs">
       <DependentUpon>PerspectiveCameraPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SceneElementPanel.cs" />
     <Compile Include="Controls\SpherePanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -142,6 +149,9 @@
     <Compile Include="Model\Sphere.cs" />
     <Compile Include="Model\Transformation.cs" />
     <Compile Include="Model\Triangle.cs" />
+    <EmbeddedResource Include="Controls\CylinderPanel.resx">
+      <DependentUpon>CylinderPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\DoublePanel.resx">
       <DependentUpon>DoublePanel.cs</DependentUpon>
     </EmbeddedResource>

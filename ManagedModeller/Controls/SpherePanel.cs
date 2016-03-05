@@ -3,7 +3,7 @@ using ManagedModeller.Model;
 using System.Windows.Forms;
 
 namespace ManagedModeller.Controls {
-    public partial class SpherePanel : UserControl {
+    public partial class SpherePanel : UserControl, SceneElementPanel {
 
         private void OnNameUpdated(string name) {
             if (sphere != null) {
@@ -38,6 +38,12 @@ namespace ManagedModeller.Controls {
         }
 
         private Sphere sphere;
+
+        public void SetSceneElement(SceneElement sceneElement) {
+            if (sceneElement is Sphere) {
+                SetSphere((Sphere)sceneElement);
+            }
+        }
 
         public void SetSphere(Sphere sphere) {
             this.sphere = sphere;

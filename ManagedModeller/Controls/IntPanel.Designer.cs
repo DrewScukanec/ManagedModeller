@@ -41,7 +41,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(58, 20);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(60, 20);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label
@@ -62,8 +62,10 @@
             this.textBox.Location = new System.Drawing.Point(23, 0);
             this.textBox.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(35, 20);
+            this.textBox.Size = new System.Drawing.Size(37, 20);
             this.textBox.TabIndex = 1;
+            this.textBox.Text = "0";
+            this.textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // IntPanel
             // 
@@ -71,9 +73,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.MaximumSize = new System.Drawing.Size(0, 20);
-            this.MinimumSize = new System.Drawing.Size(50, 20);
+            this.MinimumSize = new System.Drawing.Size(60, 20);
             this.Name = "IntPanel";
-            this.Size = new System.Drawing.Size(58, 20);
+            this.Size = new System.Drawing.Size(60, 20);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

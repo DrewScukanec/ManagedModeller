@@ -3,7 +3,7 @@ using OpenTK;
 using System.Windows.Forms;
 
 namespace ManagedModeller.Controls {
-    public partial class OrthographicCameraPanel : UserControl {
+    public partial class OrthographicCameraPanel : UserControl, SceneElementPanel {
 
         private void OnNameUpdated(string value) {
             if (camera != null) {
@@ -52,6 +52,12 @@ namespace ManagedModeller.Controls {
         }
 
         private OrthographicCamera camera;
+
+        public void SetSceneElement(SceneElement sceneElement) {
+            if (sceneElement is OrthographicCamera) {
+                SetCamera((OrthographicCamera)sceneElement);
+            }
+        }
 
         public void SetCamera(OrthographicCamera camera) {
             this.camera = camera;

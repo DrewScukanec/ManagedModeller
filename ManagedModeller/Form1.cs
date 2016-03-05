@@ -44,34 +44,31 @@ namespace ManagedModeller
             if (node != null) {
                 SceneElementNode sceneElementNode = (SceneElementNode)node;
                 SceneElement sceneElement = sceneElementNode.SceneElement;
+                SceneElementPanel panel = null;
+                Control control = null;
                 if (sceneElement is OrthographicCamera) {
-                    OrthographicCamera camera = (OrthographicCamera) sceneElement;
-
-                    OrthographicCameraPanel panel = new OrthographicCameraPanel();
-                    propertyPage.Controls.Clear();
-                    propertyPage.Controls.Add(panel);
-                    panel.Dock = DockStyle.Top;
-
-                    panel.SetCamera(camera);
+                    OrthographicCameraPanel defPanel = new OrthographicCameraPanel();
+                    control = defPanel;
+                    panel = defPanel;
                 } else if (sceneElement is PerspectiveCamera) {
-                    PerspectiveCamera camera = (PerspectiveCamera) sceneElement;
-
-                    PerspectiveCameraPanel panel = new PerspectiveCameraPanel();
-                    propertyPage.Controls.Clear();
-                    propertyPage.Controls.Add(panel);
-                    panel.Dock = DockStyle.Top;
-
-                    panel.SetCamera(camera);
+                    PerspectiveCameraPanel defPanel = new PerspectiveCameraPanel();
+                    control = defPanel;
+                    panel = defPanel;
                 } else if (sceneElement is Sphere) {
-                    Sphere sphere = (Sphere)sceneElement;
-
-                    SpherePanel panel = new SpherePanel();
-                    propertyPage.Controls.Clear();
-                    propertyPage.Controls.Add(panel);
-                    panel.Dock = DockStyle.Top;
-
-                    panel.SetSphere(sphere);
+                    SpherePanel defPanel = new SpherePanel();
+                    control = defPanel;
+                    panel = defPanel;
+                } else if (sceneElement is Cylinder) {
+                    CylinderPanel defPanel = new CylinderPanel();
+                    control = defPanel;
+                    panel = defPanel;
                 }
+
+                propertyPage.Controls.Clear();
+                propertyPage.Controls.Add(control);
+                control.Dock = DockStyle.Top;
+
+                panel.SetSceneElement(sceneElement);
             }
         }
     }

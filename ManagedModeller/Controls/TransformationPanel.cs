@@ -17,7 +17,7 @@ namespace ManagedModeller.Controls {
         }
 
         public Transformation Value {
-            get { return new Transformation(transformation); }
+            get { return transformation == null ? new Transformation() : new Transformation(transformation); }
             set {
                 transformation = new Transformation(value);
                 translatePanel.Value = transformation.Translation;
@@ -26,13 +26,17 @@ namespace ManagedModeller.Controls {
         }
 
         private void OnTranslationUpdated(Vector3d newValue) {
-            transformation.Translation = newValue;
-            NotifyTransformationUpdated();
+            if (transformation != null) {
+                transformation.Translation = newValue;
+                NotifyTransformationUpdated();
+            }
         }
 
         private void OnScaleUpdated(Vector3d newValue) {
-            transformation.Scale = newValue;
-            NotifyTransformationUpdated();
+            if (transformation != null) {
+                transformation.Scale = newValue;
+                NotifyTransformationUpdated();
+            }
         }
 
         private void NotifyTransformationUpdated() {

@@ -1,5 +1,5 @@
 ﻿namespace ManagedModeller.Controls {
-    partial class SpherePanel {
+    partial class CylinderPanel {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
@@ -23,13 +23,25 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            ManagedModeller.Model.Transformation transformation1 = new ManagedModeller.Model.Transformation();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpherePanel));
+            ManagedModeller.Model.Transformation transformation2 = new ManagedModeller.Model.Transformation();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CylinderPanel));
+            this.divisionPanel = new ManagedModeller.Controls.IntPanel();
             this.transformationPanel = new ManagedModeller.Controls.TransformationPanel();
             this.colorPanel = new ManagedModeller.Controls.Vector3Panel();
             this.namePanel = new ManagedModeller.Controls.StringPanel();
-            this.maxDepthPanel = new ManagedModeller.Controls.IntPanel();
             this.SuspendLayout();
+            // 
+            // divisionPanel
+            // 
+            this.divisionPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.divisionPanel.Label = "Divisions";
+            this.divisionPanel.Location = new System.Drawing.Point(0, 265);
+            this.divisionPanel.MaximumSize = new System.Drawing.Size(0, 20);
+            this.divisionPanel.MinimumSize = new System.Drawing.Size(50, 20);
+            this.divisionPanel.Name = "divisionPanel";
+            this.divisionPanel.Size = new System.Drawing.Size(113, 20);
+            this.divisionPanel.TabIndex = 3;
+            this.divisionPanel.Value = 0;
             // 
             // transformationPanel
             // 
@@ -39,12 +51,12 @@
             this.transformationPanel.MaximumSize = new System.Drawing.Size(0, 164);
             this.transformationPanel.MinimumSize = new System.Drawing.Size(98, 164);
             this.transformationPanel.Name = "transformationPanel";
-            this.transformationPanel.Size = new System.Drawing.Size(116, 164);
+            this.transformationPanel.Size = new System.Drawing.Size(113, 164);
             this.transformationPanel.TabIndex = 2;
-            transformation1.Rotation = ((OpenTK.Quaterniond)(resources.GetObject("transformation1.Rotation")));
-            transformation1.Scale = ((OpenTK.Vector3d)(resources.GetObject("transformation1.Scale")));
-            transformation1.Translation = ((OpenTK.Vector3d)(resources.GetObject("transformation1.Translation")));
-            this.transformationPanel.Value = transformation1;
+            transformation2.Rotation = ((OpenTK.Quaterniond)(resources.GetObject("transformation2.Rotation")));
+            transformation2.Scale = ((OpenTK.Vector3d)(resources.GetObject("transformation2.Scale")));
+            transformation2.Translation = ((OpenTK.Vector3d)(resources.GetObject("transformation2.Translation")));
+            this.transformationPanel.Value = transformation2;
             // 
             // colorPanel
             // 
@@ -54,7 +66,7 @@
             this.colorPanel.MaximumSize = new System.Drawing.Size(0, 81);
             this.colorPanel.MinimumSize = new System.Drawing.Size(62, 81);
             this.colorPanel.Name = "colorPanel";
-            this.colorPanel.Size = new System.Drawing.Size(116, 81);
+            this.colorPanel.Size = new System.Drawing.Size(113, 81);
             this.colorPanel.TabIndex = 1;
             this.colorPanel.Value = ((OpenTK.Vector3)(resources.GetObject("colorPanel.Value")));
             // 
@@ -65,34 +77,22 @@
             this.namePanel.Location = new System.Drawing.Point(0, 0);
             this.namePanel.MinimumSize = new System.Drawing.Size(50, 20);
             this.namePanel.Name = "namePanel";
-            this.namePanel.Size = new System.Drawing.Size(116, 20);
+            this.namePanel.Size = new System.Drawing.Size(113, 20);
             this.namePanel.TabIndex = 0;
             this.namePanel.Value = "";
             // 
-            // maxDepthPanel
-            // 
-            this.maxDepthPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.maxDepthPanel.Label = "Max Depth";
-            this.maxDepthPanel.Location = new System.Drawing.Point(0, 265);
-            this.maxDepthPanel.MaximumSize = new System.Drawing.Size(0, 20);
-            this.maxDepthPanel.MinimumSize = new System.Drawing.Size(50, 20);
-            this.maxDepthPanel.Name = "maxDepthPanel";
-            this.maxDepthPanel.Size = new System.Drawing.Size(116, 20);
-            this.maxDepthPanel.TabIndex = 3;
-            this.maxDepthPanel.Value = 0;
-            // 
-            // SpherePanel
+            // CylinderPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.maxDepthPanel);
+            this.Controls.Add(this.divisionPanel);
             this.Controls.Add(this.transformationPanel);
             this.Controls.Add(this.colorPanel);
             this.Controls.Add(this.namePanel);
             this.MaximumSize = new System.Drawing.Size(0, 285);
-            this.MinimumSize = new System.Drawing.Size(116, 285);
-            this.Name = "SpherePanel";
-            this.Size = new System.Drawing.Size(116, 285);
+            this.MinimumSize = new System.Drawing.Size(113, 285);
+            this.Name = "CylinderPanel";
+            this.Size = new System.Drawing.Size(113, 285);
             this.ResumeLayout(false);
 
         }
@@ -102,6 +102,6 @@
         private StringPanel namePanel;
         private Vector3Panel colorPanel;
         private TransformationPanel transformationPanel;
-        private IntPanel maxDepthPanel;
+        private IntPanel divisionPanel;
     }
 }

@@ -3,7 +3,7 @@ using OpenTK;
 using System.Windows.Forms;
 
 namespace ManagedModeller.Controls {
-    public partial class PerspectiveCameraPanel : UserControl {
+    public partial class PerspectiveCameraPanel : UserControl, SceneElementPanel {
         private void OnNameUpdated(string value) {
             if (camera != null) {
                 camera.Name = value;
@@ -58,6 +58,12 @@ namespace ManagedModeller.Controls {
         }
 
         private PerspectiveCamera camera;
+
+        public void SetSceneElement(SceneElement sceneElement) {
+            if (sceneElement is Sphere) {
+                SetCamera((PerspectiveCamera)sceneElement);
+            }
+        }
 
         public void SetCamera(PerspectiveCamera camera) {
             this.camera = camera;
