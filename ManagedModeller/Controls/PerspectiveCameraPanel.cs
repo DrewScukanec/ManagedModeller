@@ -60,7 +60,7 @@ namespace ManagedModeller.Controls {
         private PerspectiveCamera camera;
 
         public void SetSceneElement(SceneElement sceneElement) {
-            if (sceneElement is Sphere) {
+            if (sceneElement is PerspectiveCamera) {
                 SetCamera((PerspectiveCamera)sceneElement);
             }
         }
