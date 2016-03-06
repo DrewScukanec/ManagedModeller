@@ -44,8 +44,8 @@ namespace ManagedModeller.Model {
         #endregion
 
         public Scene() {
-            Cylinder();
-            //Sphere();
+            //Cylinder();
+            Sphere();
             //Triangles();
         }
 
@@ -138,7 +138,7 @@ namespace ManagedModeller.Model {
             GL.Enable(EnableCap.Light0);
             Vector4 ambient = new Vector4(0.2f, 0.2f, 0.2f, 1.0f);
             GL.Light(LightName.Light0, LightParameter.Ambient, ambient);
-            Vector4 diffuse = new Vector4(50, 50, 50, 1);
+            Vector4 diffuse = new Vector4(1, 1, 1, 1);
             GL.Light(LightName.Light0, LightParameter.Diffuse, diffuse);
             Vector4 specular = new Vector4(1, 1, 1, 1);
             GL.Light(LightName.Light0, LightParameter.Specular, specular);
