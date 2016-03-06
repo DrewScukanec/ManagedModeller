@@ -44,8 +44,8 @@ namespace ManagedModeller.Model {
             if (isShiftPressed) {
                 float rotationAroundRight = offset.Y / Height * FovY;
                 float rotationAroundUp = offset.X / Width * FovX;
+                Right = right * ((float)Math.Cos(rotationAroundUp)) + eyeDirection * ((float)Math.Sin(rotationAroundUp));
                 Up = up * ((float) Math.Cos(rotationAroundRight)) + eyeDirection * ((float) Math.Sin(rotationAroundRight));
-                Right = right * ((float) Math.Cos(rotationAroundUp)) + eyeDirection * ((float) Math.Sin(rotationAroundUp));
             } else {
                 Vector3 threeDOffset = right * offset.X + up * offset.Y;
                 location -= threeDOffset;
@@ -55,6 +55,7 @@ namespace ManagedModeller.Model {
         }
 
         public override void Rotate(float rotation) {
+            rotation /= 10;
             Up = up * ((float) Math.Cos(rotation)) + right * ((float) Math.Sin(rotation));
         }
 
