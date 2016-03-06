@@ -98,11 +98,16 @@ namespace ManagedModeller {
             glControl.MakeCurrent();
 
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            GL.Enable(EnableCap.DepthTest);
 
+            // Set up per-camera settings
+            GL.ShadeModel(ShadingModel.Smooth);
+            GL.Enable(EnableCap.Lighting);
             camera.SetProjectionMatrix();
             camera.SetModelViewMatrix();
+
+            // Render the scene
             scene.Render();
-            scene.RenderAxes();
 
             glControl.SwapBuffers();
         }

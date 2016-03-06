@@ -1,4 +1,5 @@
-﻿using OpenTK.Graphics.OpenGL;
+﻿using OpenTK;
+using OpenTK.Graphics.OpenGL;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -126,12 +127,27 @@ namespace ManagedModeller.Model {
 
         #region Rendering
         public void Render() {
+            PrepareLighting();
             foreach (Primitive primitive in primitives) {
                 primitive.Render();
             }
+            RenderAxes();
         }
 
-        public void RenderAxes() {
+        private void PrepareLighting() {
+            GL.Enable(EnableCap.Light0);
+            Vector4 ambient = new Vector4(0.2f, 0.2f, 0.2f, 1.0f);
+            GL.Light(LightName.Light0, LightParameter.Ambient, ambient);
+            Vector4 diffuse = new Vector4(50, 50, 50, 1);
+            GL.Light(LightName.Light0, LightParameter.Diffuse, diffuse);
+            Vector4 specular = new Vector4(1, 1, 1, 1);
+            GL.Light(LightName.Light0, LightParameter.Specular, specular);
+            Vector4 position = new Vector4(200, 200, 0, 1);
+            GL.Light(LightName.Light0, LightParameter.Position, position);
+        }
+
+        private void RenderAxes() {
+            GL.Disable(EnableCap.Lighting);
             GL.Begin(PrimitiveType.Lines);
             GL.Color3(Color.Red);
             GL.Vertex4(0, 0, 0, 1);
