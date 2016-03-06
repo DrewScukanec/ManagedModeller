@@ -45,8 +45,11 @@ namespace ManagedModeller.Model {
 
         private void Recurse(Vector3 a, Vector3 b, Vector3 c, int depth) {
             if (depth == maxDepth) {
+                GL.Normal3(a);
                 GL.Vertex3(a);
+                GL.Normal3(b);
                 GL.Vertex3(b);
+                GL.Normal3(c);
                 GL.Vertex3(c);
                 return;
             }
