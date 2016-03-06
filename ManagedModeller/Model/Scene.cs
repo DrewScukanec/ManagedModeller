@@ -132,16 +132,18 @@ namespace ManagedModeller.Model {
         }
 
         public void RenderAxes() {
-            GL.Color3(Color.White);
             GL.Begin(PrimitiveType.Lines);
+            GL.Color3(Color.Red);
             GL.Vertex4(0, 0, 0, 1);
             GL.Vertex4(1, 0, 0, 0);
             //GL.Vertex4(0, 0, 0, 1);
             //GL.Vertex4(-1, 0, 0, 0);
+            GL.Color3(Color.Green);
             GL.Vertex4(0, 0, 0, 1);
             GL.Vertex4(0, 1, 0, 0);
             //GL.Vertex4(0, 0, 0, 1);
             //GL.Vertex4(0, -1, 0, 0);
+            GL.Color3(Color.Blue);
             GL.Vertex4(0, 0, 0, 1);
             GL.Vertex4(0, 0, 1, 0);
             //GL.Vertex4(0, 0, 0, 1);
