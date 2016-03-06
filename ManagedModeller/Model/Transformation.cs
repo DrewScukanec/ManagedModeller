@@ -46,6 +46,7 @@ namespace ManagedModeller.Model {
             translation.X = x;
             translation.Y = y;
             translation.Z = z;
+            transposeInverseDirty = true;
             NotifyListeners();
         }
         #endregion
@@ -61,6 +62,7 @@ namespace ManagedModeller.Model {
             scale.X = x;
             scale.Y = y;
             scale.Z = z;
+            transposeInverseDirty = true;
             NotifyListeners();
         }
         #endregion
@@ -77,6 +79,7 @@ namespace ManagedModeller.Model {
             rotation.Y = y;
             rotation.Z = z;
             rotation.W = w;
+            transposeInverseDirty = true;
             NotifyListeners();
         }
         #endregion
@@ -86,6 +89,24 @@ namespace ManagedModeller.Model {
             GL.Translate(translation);
             // TODO: Apply rotation
             GL.Scale(scale);
+        }
+
+        private bool transposeInverseDirty = true;
+        private Matrix4d transposeInverse;
+        public Matrix4d GetTransposeInverse() {
+            UpdateTransposeInverse();
+            return transposeInverse;
+        }
+        private void UpdateTransposeInverse() {
+            if (!transposeInverseDirty) {
+                return;
+            }
+            transposeInverseDirty = false;
+            transposeInverse = Matrix4d.Scale(scale);
+            // TODO: Apply rotation
+            transposeInverse = Matrix4d.Mult(Matrix4d.CreateTranslation(translation), transposeInverse);
+            transposeInverse.Invert();
+            transposeInverse.Transpose();
         }
         #endregion
     }
