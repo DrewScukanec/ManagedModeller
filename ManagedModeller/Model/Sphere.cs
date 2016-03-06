@@ -5,18 +5,18 @@ namespace ManagedModeller.Model {
     public class Sphere : Primitive {
 
         #region Static
-        private static Vector3 TOP = new Vector3(0, 1, 0);
-        private static Vector3 BOTTOM = new Vector3(0, -1, 0);
+        private static Vector3d TOP = new Vector3d(0, 1, 0);
+        private static Vector3d BOTTOM = new Vector3d(0, -1, 0);
 
-        private static Vector3 RIGHT = new Vector3(1, 0, 0);
-        private static Vector3 LEFT = new Vector3(-1, 0, 0);
+        private static Vector3d RIGHT = new Vector3d(1, 0, 0);
+        private static Vector3d LEFT = new Vector3d(-1, 0, 0);
 
-        private static Vector3 FRONT = new Vector3(0, 0, 1);
-        private static Vector3 BACK = new Vector3(0, 0, -1);
+        private static Vector3d FRONT = new Vector3d(0, 0, 1);
+        private static Vector3d BACK = new Vector3d(0, 0, -1);
         #endregion
 
         #region MaxDepth
-        private int maxDepth = 4;
+        private int maxDepth = 5;
         public int MaxDepth {
             get { return maxDepth; }
             set {
@@ -43,22 +43,30 @@ namespace ManagedModeller.Model {
             GL.End();
         }
 
-        private void Recurse(Vector3 a, Vector3 b, Vector3 c, int depth) {
+        private void Recurse(Vector3d a, Vector3d b, Vector3d c, int depth) {
             if (depth == maxDepth) {
-                GL.Normal3(a);
+                Matrix4d ti = transformation.GetTransposeInverse();
+                Vector3d normal;
+
+                Vector3d.TransformNormal(ref a, ref ti, out normal);
+                GL.Normal3(normal);
                 GL.Vertex3(a);
-                GL.Normal3(b);
+
+                Vector3d.TransformNormal(ref b, ref ti, out normal);
+                GL.Normal3(normal);
                 GL.Vertex3(b);
-                GL.Normal3(c);
+
+                Vector3d.TransformNormal(ref c, ref ti, out normal);
+                GL.Normal3(normal);
                 GL.Vertex3(c);
                 return;
             }
 
-            Vector3 midAtoB = a + b;
+            Vector3d midAtoB = a + b;
             midAtoB.Normalize();
-            Vector3 midBtoC = b + c;
+            Vector3d midBtoC = b + c;
             midBtoC.Normalize();
-            Vector3 midCtoA = c + a;
+            Vector3d midCtoA = c + a;
             midCtoA.Normalize();
 
             Recurse(midCtoA, a, midAtoB, depth + 1);
